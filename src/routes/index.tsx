@@ -21,7 +21,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CtaButton, Check, Reveal, SectionLabel, SectionTitle } from "@/components/landing/parts";
+import {
+  CtaButton,
+  Check,
+  PlanButton,
+  Reveal,
+  SectionLabel,
+  SectionTitle,
+} from "@/components/landing/parts";
+import imgSarah from "@/assets/sarah-martins.jpg.asset.json";
+
 import {
   bonusValues,
   faq,
@@ -412,9 +421,10 @@ function LandingPage() {
                 <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
-                <p className="mt-2 font-display text-3xl font-extrabold text-brand sm:text-4xl">
+                <p className="animate-pulse-free mt-2 font-display text-3xl font-extrabold text-cta sm:text-4xl">
                   {plans.basic.price}
                 </p>
+
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
                     <Check />
@@ -438,13 +448,11 @@ function LandingPage() {
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-destructive">
                   Sem os bônus
                 </p>
-                <a
-                  href={plans.basic.checkoutUrl}
-                  className="mt-6 inline-flex items-center justify-center rounded-2xl border-2 border-brand/20 px-6 py-3.5 text-center font-display text-sm font-extrabold uppercase tracking-tight text-brand transition-colors hover:bg-brand-soft sm:text-base"
-                >
-                  Quero o plano básico
-                </a>
+                <div className="mt-6">
+                  <PlanButton href={plans.basic.checkoutUrl} variant="outline" />
+                </div>
               </article>
+
             </Reveal>
 
             {/* COMPLETO */}
@@ -456,9 +464,10 @@ function LandingPage() {
                 <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.complete.name}
                 </p>
-                <p className="mt-2 font-display text-4xl font-extrabold text-brand sm:text-5xl">
+                <p className="animate-pulse-free mt-2 font-display text-4xl font-extrabold text-cta sm:text-5xl">
                   {plans.complete.price}
                 </p>
+
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
                     <Check />
@@ -480,11 +489,12 @@ function LandingPage() {
                   ))}
                 </ul>
                 <div className="mt-7 flex flex-col items-center">
-                  <CtaButton pulse>Quero o plano completo</CtaButton>
+                  <PlanButton href={plans.complete.checkoutUrl} />
                   <p className="mt-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
                     Pagamento seguro • Acesso digital • Liberação após confirmação
                   </p>
                 </div>
+
               </article>
             </Reveal>
           </div>
