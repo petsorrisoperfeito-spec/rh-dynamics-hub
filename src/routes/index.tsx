@@ -391,70 +391,102 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* OFERTA */}
+      {/* PLANOS */}
       <section
         id="oferta"
         className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20"
       >
-        <div className="mx-auto max-w-3xl">
+        <div className="mx-auto max-w-5xl">
           <Reveal className="text-center">
-            <SectionLabel>Oferta completa</SectionLabel>
+            <SectionLabel>Escolha seu plano</SectionLabel>
             <SectionTitle className="mt-4">
               Leve o pacote completo para sua rotina de RH
             </SectionTitle>
           </Reveal>
 
-          <Reveal delay={100} className="mt-9">
-            <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
-              <div className="bg-brand-gradient px-6 py-6 text-center sm:px-10">
-                <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand-foreground sm:text-2xl">
-                  Acesso completo ao pacote
+          <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
+            {/* BÁSICO */}
+            <Reveal>
+              <article className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8">
+                <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand">
+                  {plans.basic.name}
                 </p>
-              </div>
-
-              <div className="px-6 py-8 sm:px-10 sm:py-10">
-                <ul className="grid gap-3">
-                  {packageItems.map((item) => (
+                <p className="mt-2 font-display text-3xl font-extrabold text-brand sm:text-4xl">
+                  {plans.basic.price}
+                </p>
+                <ul className="mt-6 grid gap-3">
+                  <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
+                    <Check />
+                    <span className="min-w-0">+500 Dinâmicas Prontas para RH</span>
+                  </li>
+                  {bonusNames.map((b) => (
                     <li
-                      key={item}
-                      className="flex items-start gap-3 border-b border-border pb-3 text-sm font-semibold text-brand last:border-0 last:pb-0 sm:text-base"
+                      key={b}
+                      className="flex items-start gap-3 text-sm font-semibold text-muted-foreground line-through sm:text-base"
                     >
-                      <Check />
-                      <span className="min-w-0">{item}</span>
+                      <span
+                        aria-hidden
+                        className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-destructive/10 text-destructive"
+                      >
+                        <X className="h-3.5 w-3.5" strokeWidth={3} />
+                      </span>
+                      <span className="min-w-0">{b}</span>
                     </li>
                   ))}
                 </ul>
+                <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-destructive">
+                  Sem os bônus
+                </p>
+                <a
+                  href={plans.basic.checkoutUrl}
+                  className="mt-6 inline-flex items-center justify-center rounded-2xl border-2 border-brand/20 px-6 py-3.5 text-center font-display text-sm font-extrabold uppercase tracking-tight text-brand transition-colors hover:bg-brand-soft sm:text-base"
+                >
+                  Quero o plano básico
+                </a>
+              </article>
+            </Reveal>
 
-                <div className="mt-8 rounded-3xl bg-brand-soft p-6 text-center">
-                  {offer.priceLabel ? (
-                    <p className="text-[0.68rem] font-extrabold uppercase tracking-[0.18em] text-teal">
-                      {offer.priceLabel}
-                    </p>
-                  ) : null}
-                  {offer.priceCompare ? (
-                    <p className="mt-2 text-sm text-muted-foreground line-through">
-                      {offer.priceCompare}
-                    </p>
-                  ) : null}
-                  <p className="mt-1 font-display text-4xl font-extrabold text-brand sm:text-6xl">
-                    {offer.price}
-                  </p>
-                  {offer.installments ? (
-                    <p className="mt-2 text-sm font-semibold text-muted-foreground">
-                      {offer.installments}
-                    </p>
-                  ) : null}
-                </div>
-
+            {/* COMPLETO */}
+            <Reveal delay={100}>
+              <article className="relative flex h-full flex-col rounded-[2rem] border-2 border-cta bg-card p-6 shadow-card sm:p-8">
+                <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-cta px-4 py-1.5 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+                  <Crown className="h-3.5 w-3.5" aria-hidden /> Mais vantajoso
+                </span>
+                <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-brand">
+                  {plans.complete.name}
+                </p>
+                <p className="mt-2 font-display text-4xl font-extrabold text-brand sm:text-5xl">
+                  {plans.complete.price}
+                </p>
+                <ul className="mt-6 grid gap-3">
+                  <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
+                    <Check />
+                    <span className="min-w-0">+500 Dinâmicas Prontas para RH</span>
+                  </li>
+                  {bonusNames.map((b) => (
+                    <li
+                      key={b}
+                      className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base"
+                    >
+                      <span
+                        aria-hidden
+                        className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-cta/15 text-cta"
+                      >
+                        <Gift className="h-3.5 w-3.5" strokeWidth={2.2} />
+                      </span>
+                      <span className="min-w-0">{b}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="mt-7 flex flex-col items-center">
-                  <CtaButton pulse>Quero garantir meu acesso</CtaButton>
+                  <CtaButton pulse>Quero o plano completo</CtaButton>
                   <p className="mt-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
                     Pagamento seguro • Acesso digital • Liberação após confirmação
                   </p>
                 </div>
-              </div>
-            </div>
-          </Reveal>
+              </article>
+            </Reveal>
+          </div>
         </div>
       </section>
 
