@@ -7,7 +7,6 @@ import {
   Handshake,
   HeartHandshake,
   Layers,
-  Lightbulb,
   MessagesSquare,
   MonitorSmartphone,
   Presentation,
@@ -616,8 +615,4 @@ function LandingPage() {
       </div>
     </div>
   );
-}
-
-function _unusedIcons() {
-  return [Lightbulb];
 }
