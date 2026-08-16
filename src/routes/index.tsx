@@ -159,7 +159,7 @@ function LandingPage() {
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/10 blur-3xl"
         />
-        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-24 pt-6 text-center md:pb-8 md:pt-8">
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-20 pt-6 text-center md:pb-8 md:pt-8">
           <SectionLabel>Material digital para RH</SectionLabel>
           <h1 className="text-balance-tight mt-3 text-[1.65rem] font-extrabold uppercase leading-[1.08] text-brand sm:text-4xl lg:text-5xl">
             +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
@@ -197,14 +197,15 @@ function LandingPage() {
       </header>
 
       {/* PROBLEMA */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 pb-12 pt-6 sm:pb-16 sm:pt-8">
         <div className="mx-auto max-w-4xl">
           <Reveal className="text-center">
             <SectionLabel>A rotina real do RH</SectionLabel>
-            <SectionTitle className="mt-4">Cansado de precisar criar dinâmicas do zero?</SectionTitle>
+            <SectionTitle className="mt-3">Cansado de precisar criar dinâmicas do zero?</SectionTitle>
           </Reveal>
 
-          <div className="mt-9 grid gap-3">
+          <div className="mt-7 grid gap-3">
+
             {problems.map((p, i) => (
               <Reveal key={p} delay={i * 60}>
                 <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-5">
