@@ -1,20 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import {
-  Award,
-  BookOpenCheck,
   CalendarCheck,
-  Clock,
-  Handshake,
+  Crown,
+  Gift,
   HeartHandshake,
   Layers,
   MessagesSquare,
-  MonitorSmartphone,
   Presentation,
   ShieldCheck,
   Sparkles,
   Target,
   UserPlus,
   Users,
+  X,
 } from "lucide-react";
 import {
   Accordion,
@@ -24,13 +23,16 @@ import {
 } from "@/components/ui/accordion";
 import { CtaButton, Check, Reveal, SectionLabel, SectionTitle } from "@/components/landing/parts";
 import {
+  bonusValues,
   faq,
   footer,
   guarantee,
-  imgMockupBonus,
+  imgBonusCertificado,
+  imgBonusComunicacao,
+  imgBonusManual,
   imgMockupMain,
   imgTeam,
-  offer,
+  plans,
 } from "@/config/site";
 
 export const Route = createFileRoute("/")({
@@ -68,53 +70,49 @@ const problems = [
   "Ter dificuldade para estimular a participação dos colaboradores",
   "Precisar improvisar atividades durante reuniões",
   "Repetir sempre as mesmas dinâmicas",
-];
-
-const solutions = [
-  {
-    icon: Clock,
-    title: "Economize tempo",
-    text: "Pare de perder horas criando atividades do zero.",
-  },
-  {
-    icon: BookOpenCheck,
-    title: "Mais praticidade",
-    text: "Tenha atividades prontas para consultar quando precisar.",
-  },
-  {
-    icon: Users,
-    title: "Engaje sua equipe",
-    text: "Use dinâmicas para estimular participação e interação.",
-  },
-  {
-    icon: Presentation,
-    title: "Diversifique seus treinamentos",
-    text: "Tenha diferentes opções para utilizar em vários momentos.",
-  },
-  {
-    icon: Handshake,
-    title: "Facilite integrações",
-    text: "Torne momentos de integração mais leves e participativos.",
-  },
-  {
-    icon: MonitorSmartphone,
-    title: "Use quando precisar",
-    text: "Material digital para consultar sempre que surgir uma necessidade.",
-  },
+  "Dificuldade de integrar novos funcionários",
 ];
 
 const bonuses = [
   {
     tag: "Bônus 1",
-    title: "Manual de Gestão de Recursos Humanos",
-    text: "Um material complementar para ampliar seus conhecimentos e apoiar sua atuação na área de RH.",
+    title: "Certificado de Conclusão",
+    image: imgBonusCertificado,
+    value: bonusValues.certificado,
   },
   {
     tag: "Bônus 2",
-    title: "Como melhorar a comunicação em público (livre-se da timidez)",
-    text: "Aprenda estratégias para se comunicar melhor, falar com mais segurança e desenvolver sua comunicação.",
+    title: "Manual de Gestão de Recursos Humanos",
+    image: imgBonusManual,
+    value: bonusValues.manual,
+  },
+  {
+    tag: "Bônus 3",
+    title: "Como melhorar a comunicação em público",
+    image: imgBonusComunicacao,
+    value: bonusValues.comunicacao,
   },
 ];
+
+const bonusNames = [
+  "Certificado de Conclusão",
+  "Manual de Gestão de Recursos Humanos",
+  "Como melhorar a comunicação em público",
+];
+
+function useTodayLabel() {
+  const [label, setLabel] = useState("");
+  useEffect(() => {
+    setLabel(
+      new Date().toLocaleDateString("pt-BR", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      }),
+    );
+  }, []);
+  return label;
+}
 
 const useCases = [
   { icon: UserPlus, label: "Integração de novos colaboradores" },
@@ -144,67 +142,57 @@ const packageItems = [
 ];
 
 function LandingPage() {
+  const today = useTodayLabel();
+
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
       {/* BARRA DE DESTAQUE */}
-      <div className="bg-brand-gradient px-4 py-2.5 text-center">
-        <p className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-brand-foreground sm:text-sm">
-          Oferta especial para profissionais de RH
+      <div className="bg-promo px-4 py-2.5 text-center">
+        <p className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-promo-foreground sm:text-sm">
+          Oferta válida apenas hoje{today ? ` — ${today}` : ""}
         </p>
       </div>
 
       {/* HERO */}
-      <header className="bg-surface-gradient relative overflow-hidden border-b border-border">
+      <header className="bg-surface-gradient relative flex min-h-[calc(100svh-3rem)] items-center overflow-hidden border-b border-border">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/10 blur-3xl"
         />
-        <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:py-20">
-          <div>
-            <Reveal>
-              <SectionLabel>Material digital para RH</SectionLabel>
-              <h1 className="text-balance-tight mt-5 text-3xl font-extrabold uppercase leading-[1.08] text-brand sm:text-5xl">
-                +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
-              </h1>
-              <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Tenha dinâmicas prontas para tornar treinamentos, integrações e momentos com sua
-                equipe muito mais práticos e envolventes.
-              </p>
-            </Reveal>
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-24 pt-6 text-center md:pb-8 md:pt-8">
+          <SectionLabel>Material digital para RH</SectionLabel>
+          <h1 className="text-balance-tight mt-3 text-[1.65rem] font-extrabold uppercase leading-[1.08] text-brand sm:text-4xl lg:text-5xl">
+            +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
+          </h1>
 
-            <Reveal delay={120}>
-              <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                {heroHighlights.map((b) => (
-                  <li
-                    key={b}
-                    className="flex items-start gap-2.5 text-sm font-semibold text-brand sm:text-base"
-                  >
-                    <Check />
-                    <span className="min-w-0">{b}</span>
-                  </li>
-                ))}
-              </ul>
-            </Reveal>
-
-            <Reveal delay={200} className="mt-9">
-              <CtaButton pulse>Quero acessar agora</CtaButton>
-              <p className="mt-3 text-xs text-muted-foreground sm:text-sm">
-                Acesso rápido e fácil após a confirmação do pagamento.
-              </p>
-            </Reveal>
+          <div className="mt-4 w-full max-w-[16rem] rounded-2xl bg-card p-2 shadow-card ring-1 ring-border sm:max-w-sm lg:max-w-md">
+            <img
+              src={imgMockupMain}
+              alt="Mockup do material digital +500 Dinâmicas Prontas para RH em tablet e PDFs"
+              width={1200}
+              height={912}
+              className="h-auto w-full rounded-xl"
+            />
           </div>
 
-          <Reveal delay={100} className="relative">
-            <div className="relative rounded-3xl bg-card p-3 shadow-card ring-1 ring-border">
-              <img
-                src={imgMockupMain}
-                alt="Mockup do material digital +500 Dinâmicas Prontas para RH em tablet e PDFs"
-                width={1200}
-                height={912}
-                className="h-auto w-full rounded-2xl"
-              />
-            </div>
-          </Reveal>
+          <ul className="mt-4 grid w-full max-w-xl grid-cols-2 gap-x-4 gap-y-2 text-left">
+            {heroHighlights.map((b) => (
+              <li
+                key={b}
+                className="flex items-start gap-2 text-[0.82rem] font-semibold leading-snug text-brand sm:text-base"
+              >
+                <Check className="h-5 w-5 text-xs" />
+                <span className="min-w-0">{b}</span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-5 flex w-full flex-col items-center">
+            <CtaButton pulse>Acessar agora</CtaButton>
+            <p className="mt-2 text-[0.7rem] text-muted-foreground sm:text-sm">
+              Acesso rápido e fácil após a confirmação do pagamento.
+            </p>
+          </div>
         </div>
       </header>
 
@@ -241,39 +229,44 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* SOLUÇÃO */}
+      {/* BÔNUS */}
       <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <Reveal className="mx-auto max-w-3xl text-center">
-            <SectionLabel>A solução</SectionLabel>
-            <SectionTitle className="mt-4">
-              Tudo o que você precisa para ter dinâmicas prontas para diferentes situações
-            </SectionTitle>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              O material reúne mais de 500 dinâmicas organizadas para facilitar a utilização por
-              profissionais de RH em treinamentos, integrações, reuniões e atividades de equipe.
-            </p>
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden /> Bônus
+            </span>
+            <SectionTitle className="mt-4">Bônus</SectionTitle>
           </Reveal>
 
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {solutions.map((d, i) => (
-              <Reveal key={d.title} delay={i * 70}>
-                <article className="h-full rounded-3xl border border-border bg-card p-6 shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-card">
-                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-teal">
-                    <d.icon className="h-6 w-6" strokeWidth={1.8} aria-hidden />
+            {bonuses.map((b, i) => (
+              <Reveal key={b.title} delay={i * 80}>
+                <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-5 text-center shadow-soft transition-transform duration-200 hover:-translate-y-1 sm:p-6">
+                  <img
+                    src={b.image}
+                    alt={`Imagem do bônus ${b.title}`}
+                    width={900}
+                    height={700}
+                    loading="lazy"
+                    className="h-auto w-full rounded-2xl bg-surface"
+                  />
+                  <span className="mt-4 inline-flex self-center rounded-full bg-cta/90 px-3 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+                    {b.tag}
                   </span>
-                  <h3 className="mt-5 text-lg font-bold text-brand">{d.title}</h3>
-                  <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    {d.text}
+                  <h3 className="text-balance-tight mt-3 text-base font-bold leading-snug text-brand sm:text-lg">
+                    {b.title}
+                  </h3>
+                  <p className="mt-3 text-sm font-semibold text-danger-price line-through">
+                    {b.value}
+                  </p>
+                  <p className="animate-pulse-free mt-1 font-display text-xl font-extrabold uppercase tracking-tight text-success">
+                    Grátis
                   </p>
                 </article>
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={140} className="mt-10 flex flex-col items-center">
-            <CtaButton>Quero acessar agora</CtaButton>
-          </Reveal>
         </div>
       </section>
 
@@ -282,7 +275,7 @@ function LandingPage() {
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionLabel>Conteúdo da compra</SectionLabel>
-            <SectionTitle className="mt-4">Veja tudo o que está incluso na sua compra</SectionTitle>
+            <SectionTitle className="mt-4">O que você vai receber</SectionTitle>
           </Reveal>
 
           {/* PRODUTO PRINCIPAL */}
@@ -316,60 +309,18 @@ function LandingPage() {
             </article>
           </Reveal>
 
-          {/* INCLUSO: CERTIFICADO */}
           <Reveal delay={120} className="mt-6">
-            <article className="flex flex-col items-start gap-4 rounded-3xl border border-teal/25 bg-brand-soft p-6 sm:flex-row sm:items-center sm:p-8">
-              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-card text-teal shadow-soft">
-                <Award className="h-7 w-7" strokeWidth={1.7} aria-hidden />
-              </span>
-              <div className="min-w-0">
-                <span className="inline-flex rounded-full bg-teal px-3 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-teal-foreground">
-                  Incluso na oferta
-                </span>
-                <h3 className="mt-3 text-lg font-bold text-brand sm:text-xl">
-                  Certificado de Conclusão
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  Receba seu certificado de conclusão junto com o material.
-                </p>
-              </div>
-            </article>
-          </Reveal>
-
-          {/* BÔNUS */}
-          <Reveal delay={160} className="mt-10 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden /> E ainda: 2 bônus especiais
-            </span>
-          </Reveal>
-
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
-            {bonuses.map((b, i) => (
-              <Reveal key={b.tag} delay={i * 90}>
-                <article className="h-full rounded-3xl border border-border bg-card p-6 shadow-soft transition-transform duration-200 hover:-translate-y-1 sm:p-7">
-                  <span className="inline-flex rounded-full bg-cta/90 px-3 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
-                    {b.tag}
-                  </span>
-                  <h3 className="text-balance-tight mt-4 text-lg font-bold leading-snug text-brand sm:text-xl">
-                    {b.title}
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                    {b.text}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-
-          <Reveal delay={120} className="mx-auto mt-8 max-w-3xl">
-            <img
-              src={imgMockupBonus}
-              alt="Mockups dos materiais bônus: manual de gestão de recursos humanos e comunicação em público"
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-auto w-full"
-            />
+            <ul className="grid gap-3 rounded-3xl border border-teal/25 bg-brand-soft p-6 sm:grid-cols-2 sm:p-8">
+              {packageItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base"
+                >
+                  <Check />
+                  <span className="min-w-0">{item}</span>
+                </li>
+              ))}
+            </ul>
           </Reveal>
         </div>
       </section>
