@@ -1,12 +1,11 @@
 import type { ReactNode } from "react";
-import { useReveal } from "@/hooks/use-reveal";
 import { offer } from "@/config/site";
 import { cn } from "@/lib/utils";
 
+/** Sem animação de scroll — os elementos aparecem normalmente. */
 export function Reveal({
   children,
   className,
-  delay = 0,
   as: Tag = "div",
 }: {
   children: ReactNode;
@@ -14,17 +13,31 @@ export function Reveal({
   delay?: number;
   as?: "div" | "section" | "li" | "span";
 }) {
-  const { ref, visible } = useReveal<HTMLDivElement>();
+  return <Tag className={className}>{children}</Tag>;
+}
+
+export function PlanButton({
+  href,
+  variant = "solid",
+}: {
+  href: string;
+  variant?: "solid" | "outline";
+}) {
   return (
-    <Tag
-      ref={ref as never}
-      className={cn(visible ? "reveal-in" : "reveal-hidden", className)}
-      style={visible && delay ? { animationDelay: `${delay}ms` } : undefined}
+    <a
+      href={href}
+      className={cn(
+        "animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-center font-display text-sm font-extrabold uppercase tracking-tight transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 sm:text-base",
+        variant === "solid"
+          ? "bg-cta text-cta-foreground shadow-cta"
+          : "border-2 border-cta bg-cta/10 text-cta",
+      )}
     >
-      {children}
-    </Tag>
+      🛒 Quero comprar!
+    </a>
   );
 }
+
 
 export function CtaButton({
   children,

@@ -21,7 +21,16 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { CtaButton, Check, Reveal, SectionLabel, SectionTitle } from "@/components/landing/parts";
+import {
+  CtaButton,
+  Check,
+  PlanButton,
+  Reveal,
+  SectionLabel,
+  SectionTitle,
+} from "@/components/landing/parts";
+import imgSarah from "@/assets/sarah-martins.jpg.asset.json";
+
 import {
   bonusValues,
   faq,
@@ -159,7 +168,7 @@ function LandingPage() {
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/10 blur-3xl"
         />
-        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-24 pt-6 text-center md:pb-8 md:pt-8">
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-20 pt-6 text-center md:pb-8 md:pt-8">
           <SectionLabel>Material digital para RH</SectionLabel>
           <h1 className="text-balance-tight mt-3 text-[1.65rem] font-extrabold uppercase leading-[1.08] text-brand sm:text-4xl lg:text-5xl">
             +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
@@ -197,14 +206,15 @@ function LandingPage() {
       </header>
 
       {/* PROBLEMA */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 pb-12 pt-6 sm:pb-16 sm:pt-8">
         <div className="mx-auto max-w-4xl">
           <Reveal className="text-center">
             <SectionLabel>A rotina real do RH</SectionLabel>
-            <SectionTitle className="mt-4">Cansado de precisar criar dinâmicas do zero?</SectionTitle>
+            <SectionTitle className="mt-3">Cansado de precisar criar dinâmicas do zero?</SectionTitle>
           </Reveal>
 
-          <div className="mt-9 grid gap-3">
+          <div className="mt-7 grid gap-3">
+
             {problems.map((p, i) => (
               <Reveal key={p} delay={i * 60}>
                 <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-5">
@@ -411,9 +421,10 @@ function LandingPage() {
                 <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
-                <p className="mt-2 font-display text-3xl font-extrabold text-brand sm:text-4xl">
+                <p className="animate-pulse-free mt-2 font-display text-3xl font-extrabold text-cta sm:text-4xl">
                   {plans.basic.price}
                 </p>
+
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
                     <Check />
@@ -437,13 +448,11 @@ function LandingPage() {
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wide text-destructive">
                   Sem os bônus
                 </p>
-                <a
-                  href={plans.basic.checkoutUrl}
-                  className="mt-6 inline-flex items-center justify-center rounded-2xl border-2 border-brand/20 px-6 py-3.5 text-center font-display text-sm font-extrabold uppercase tracking-tight text-brand transition-colors hover:bg-brand-soft sm:text-base"
-                >
-                  Quero o plano básico
-                </a>
+                <div className="mt-6">
+                  <PlanButton href={plans.basic.checkoutUrl} variant="outline" />
+                </div>
               </article>
+
             </Reveal>
 
             {/* COMPLETO */}
@@ -455,9 +464,10 @@ function LandingPage() {
                 <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.complete.name}
                 </p>
-                <p className="mt-2 font-display text-4xl font-extrabold text-brand sm:text-5xl">
+                <p className="animate-pulse-free mt-2 font-display text-4xl font-extrabold text-cta sm:text-5xl">
                   {plans.complete.price}
                 </p>
+
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
                     <Check />
@@ -479,11 +489,12 @@ function LandingPage() {
                   ))}
                 </ul>
                 <div className="mt-7 flex flex-col items-center">
-                  <CtaButton pulse>Quero o plano completo</CtaButton>
+                  <PlanButton href={plans.complete.checkoutUrl} />
                   <p className="mt-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
                     Pagamento seguro • Acesso digital • Liberação após confirmação
                   </p>
                 </div>
+
               </article>
             </Reveal>
           </div>
@@ -572,7 +583,41 @@ function LandingPage() {
         </Reveal>
       </section>
 
+      {/* SOBRE A AUTORA */}
+      <section className="border-t border-border px-5 py-14 sm:py-20">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center">
+            <SectionLabel>Quem criou o material</SectionLabel>
+            <SectionTitle className="mt-4">Sobre a autora</SectionTitle>
+          </div>
+          <div className="mt-10 grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-10">
+            <div className="mx-auto w-40 max-w-full sm:w-52 md:w-full">
+              <img
+                src={imgSarah.url}
+                alt="Sarah Martins, autora do material +500 Dinâmicas Prontas para RH"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="aspect-square h-auto w-full rounded-3xl object-cover shadow-soft ring-1 ring-border"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-brand sm:text-3xl">
+                Sarah Martins
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Sarah Martins atua na área de Recursos Humanos e desenvolvimento de equipes. Criou
+                estratégias para tornar treinamentos mais dinâmicos. Reuniu recursos práticos para
+                facilitar a rotina do RH. Ajuda empresas a fortalecer suas equipes. Seu propósito é
+                tornar o RH mais simples e eficiente.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* RODAPÉ */}
+
       <footer className="px-5 py-10">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
