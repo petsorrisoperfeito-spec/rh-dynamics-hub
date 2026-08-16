@@ -33,8 +33,8 @@ export const guarantee = {
   days: null as number | null,
 };
 
-/** Contador da seção de urgência (em minutos). Reinicia de forma controlada. */
-export const countdownMinutes = 30;
+
+
 
 /** Imagens/mockups — troque os arquivos em src/assets ou aponte para uma URL. */
 export { default as imgMockupMain } from "@/assets/mockup-dinamicas.png";
