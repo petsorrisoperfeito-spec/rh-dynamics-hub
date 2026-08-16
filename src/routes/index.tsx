@@ -60,7 +60,7 @@ export const Route = createFileRoute("/")({
 const heroHighlights = [
   "+500 dinâmicas prontas",
   "Certificado incluso",
-  "2 bônus especiais",
+  "3 bônus especiais",
   "Acesso imediato",
 ];
 
