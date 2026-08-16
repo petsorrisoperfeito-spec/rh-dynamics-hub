@@ -35,6 +35,11 @@
   --color-teal-foreground: var(--teal-foreground);
   --color-cta: var(--cta);
   --color-cta-foreground: var(--cta-foreground);
+  --color-promo: var(--promo);
+  --color-promo-foreground: var(--promo-foreground);
+  --color-danger-price: var(--danger-price);
+  --color-success: var(--success);
+  --animate-pulse-free: pulse-free 2s ease-in-out infinite;
   --color-surface: var(--surface);
   --shadow-soft: var(--shadow-soft-v);
   --shadow-card: var(--shadow-card-v);
@@ -105,13 +110,17 @@
   --brand-soft: oklch(0.955 0.018 250);
   --teal: oklch(0.55 0.098 205);
   --teal-foreground: oklch(0.99 0.004 250);
-  --cta: oklch(0.68 0.185 45);
-  --cta-foreground: oklch(0.16 0.03 45);
+  --cta: oklch(0.62 0.17 148);
+  --cta-foreground: oklch(0.99 0.008 148);
+  --promo: oklch(0.51 0.2 27);
+  --promo-foreground: oklch(0.99 0.005 27);
+  --danger-price: oklch(0.55 0.21 27);
+  --success: oklch(0.56 0.16 148);
   --surface: oklch(0.975 0.008 250);
 
   --shadow-soft-v: 0 2px 10px -4px oklch(0.28 0.082 259 / 0.12);
   --shadow-card-v: 0 18px 40px -22px oklch(0.28 0.082 259 / 0.28);
-  --shadow-cta-v: 0 14px 30px -10px oklch(0.68 0.185 45 / 0.5);
+  --shadow-cta-v: 0 14px 30px -10px oklch(0.62 0.17 148 / 0.5);
 
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
@@ -196,7 +205,11 @@
 }
 @keyframes pulse-soft {
   0%, 100% { transform: scale(1); box-shadow: var(--shadow-cta-v); }
-  50% { transform: scale(1.015); box-shadow: 0 18px 38px -8px oklch(0.68 0.185 45 / 0.62); }
+  50% { transform: scale(1.015); box-shadow: 0 18px 38px -8px oklch(0.62 0.17 148 / 0.62); }
+}
+@keyframes pulse-free {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: 0.88; }
 }
 
 @utility reveal-hidden {

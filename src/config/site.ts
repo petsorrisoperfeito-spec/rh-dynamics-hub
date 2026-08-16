@@ -40,6 +40,22 @@ export const guarantee = {
 export { default as imgMockupMain } from "@/assets/mockup-dinamicas.png";
 export { default as imgMockupBonus } from "@/assets/mockup-bonus.png";
 export { default as imgTeam } from "@/assets/hero-equipe.jpg";
+export { default as imgBonusCertificado } from "@/assets/bonus-certificado.jpg";
+export { default as imgBonusManual } from "@/assets/bonus-manual.jpg";
+export { default as imgBonusComunicacao } from "@/assets/bonus-comunicacao.jpg";
+
+/** Planos / pacotes */
+export const plans = {
+  basic: { name: "Plano Básico", price: "R$ 10,00", checkoutUrl: "#checkout" },
+  complete: { name: "Plano Completo", price: "R$ 19,90", checkoutUrl: "#checkout" },
+};
+
+/** Valores fictícios exibidos riscados nos bônus. */
+export const bonusValues = {
+  certificado: "R$ 47,00",
+  manual: "R$ 67,00",
+  comunicacao: "R$ 57,00",
+};
 
 /** Rodapé */
 export const footer = {
