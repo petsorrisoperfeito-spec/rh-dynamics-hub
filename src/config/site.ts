@@ -33,8 +33,8 @@ export const guarantee = {
   days: null as number | null,
 };
 
-/** Contador da seção de urgência (em minutos). Reinicia de forma controlada. */
-export const countdownMinutes = 30;
+
+
 
 /** Imagens/mockups — troque os arquivos em src/assets ou aponte para uma URL. */
 export { default as imgMockupMain } from "@/assets/mockup-dinamicas.png";
@@ -54,31 +54,28 @@ export const footer = {
 /** FAQ — respostas totalmente configuráveis. */
 export const faq = [
   {
-    q: "Como vou receber os materiais?",
-    a: "Após a confirmação do pagamento, você recebe o acesso aos materiais digitais por e-mail, na área de entrega do checkout.",
+    q: "O que são as +500 Dinâmicas?",
+    a: "São atividades prontas que podem ser utilizadas por profissionais de RH em diferentes situações, como treinamentos, integrações, reuniões e atividades de equipe.",
   },
   {
-    q: "Os materiais são digitais?",
-    a: "Sim. Todo o conteúdo é digital, para você consultar quando precisar. Não há envio de material físico.",
+    q: "Para quem é o material?",
+    a: "Para profissionais de RH, gestores, líderes, coordenadores e pessoas que trabalham com equipes e desenvolvimento de colaboradores.",
   },
   {
-    q: "Posso acessar pelo celular?",
-    a: "Sim. O acesso é digital e funciona em celular, tablet e computador.",
+    q: "Preciso criar as dinâmicas sozinho?",
+    a: "Não. O objetivo do material é oferecer atividades prontas para facilitar sua rotina.",
   },
   {
-    q: "Para quem são as dinâmicas?",
-    a: "Para profissionais de RH, gestores, líderes, coordenadores e profissionais de treinamento e desenvolvimento que trabalham diretamente com equipes.",
+    q: "Como recebo o material?",
+    a: "O material é digital e o acesso é disponibilizado após a confirmação do pagamento.",
   },
   {
-    q: "O conteúdo serve para treinamentos e reuniões?",
-    a: "Sim. As dinâmicas foram organizadas para diferentes situações, como treinamentos, integrações, reuniões, comunicação e atividades de equipe.",
+    q: "O certificado está incluso?",
+    a: "Sim. O Certificado de Conclusão está incluso na oferta.",
   },
   {
-    q: "O pagamento é único?",
-    a: "Sim, o pagamento é único para o acesso ao pacote, conforme as condições apresentadas no checkout.",
-  },
-  {
-    q: "Quando recebo o acesso?",
-    a: "O acesso é liberado logo após a confirmação do pagamento pelo checkout.",
+    q: "Quais são os bônus?",
+    a: 'Manual de Gestão de Recursos Humanos e o material "Como melhorar a comunicação em público (livre-se da timidez)".',
   },
 ];
+

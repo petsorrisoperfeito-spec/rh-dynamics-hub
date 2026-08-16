@@ -1,17 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 import {
+  Award,
   BookOpenCheck,
+  CalendarCheck,
   Clock,
   Handshake,
-  Lightbulb,
+  HeartHandshake,
+  Layers,
   MessagesSquare,
   MonitorSmartphone,
   Presentation,
   ShieldCheck,
   Sparkles,
+  Target,
+  UserPlus,
   Users,
-  Layers,
-  CalendarCheck,
 } from "lucide-react";
 import {
   Accordion,
@@ -20,7 +23,6 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { CtaButton, Check, Reveal, SectionLabel, SectionTitle } from "@/components/landing/parts";
-import { Countdown } from "@/components/landing/Countdown";
 import {
   faq,
   footer,
@@ -29,7 +31,6 @@ import {
   imgMockupMain,
   imgTeam,
   offer,
-  vsl,
 } from "@/config/site";
 
 export const Route = createFileRoute("/")({
@@ -39,7 +40,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Mais de 500 dinâmicas prontas para treinamentos, integrações e reuniões de equipe. Certificado de conclusão e bônus inclusos. Acesso digital imediato.",
+          "Mais de 500 dinâmicas prontas para treinamentos, integrações e reuniões de equipe. Certificado de conclusão incluso e 2 bônus. Acesso digital.",
       },
       { property: "og:title", content: "+500 Dinâmicas Prontas para RH | Certificado + Bônus" },
       {
@@ -54,83 +55,105 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
 });
 
-const heroBenefits = [
-  "Mais de 500 dinâmicas prontas",
-  "Aplicação rápida e prática",
-  "Ideal para treinamentos, reuniões e integração",
-  "Certificado de Conclusão incluso",
-  "Bônus exclusivos",
+const heroHighlights = [
+  "+500 dinâmicas prontas",
+  "Certificado incluso",
+  "2 bônus especiais",
+  "Acesso imediato",
 ];
 
-const deliverables = [
-  {
-    icon: Layers,
-    title: "+500 Dinâmicas Prontas para RH",
-    text: "Dinâmicas organizadas para diferentes situações, ideais para treinamentos, integração, reuniões, comunicação, trabalho em equipe e desenvolvimento de pessoas.",
-  },
+const problems = [
+  "Perder tempo procurando atividades para treinamentos",
+  "Ficar sem ideias para integração de equipes",
+  "Ter dificuldade para estimular a participação dos colaboradores",
+  "Precisar improvisar atividades durante reuniões",
+  "Repetir sempre as mesmas dinâmicas",
+];
+
+const solutions = [
   {
     icon: Clock,
-    title: "Aplicação Prática",
-    text: "Conteúdos prontos para você consultar e aplicar sem precisar passar horas planejando cada atividade.",
+    title: "Economize tempo",
+    text: "Pare de perder horas criando atividades do zero.",
+  },
+  {
+    icon: BookOpenCheck,
+    title: "Mais praticidade",
+    text: "Tenha atividades prontas para consultar quando precisar.",
+  },
+  {
+    icon: Users,
+    title: "Engaje sua equipe",
+    text: "Use dinâmicas para estimular participação e interação.",
+  },
+  {
+    icon: Presentation,
+    title: "Diversifique seus treinamentos",
+    text: "Tenha diferentes opções para utilizar em vários momentos.",
+  },
+  {
+    icon: Handshake,
+    title: "Facilite integrações",
+    text: "Torne momentos de integração mais leves e participativos.",
   },
   {
     icon: MonitorSmartphone,
-    title: "Acesso Digital",
-    text: "Tenha seus materiais sempre à mão para consultar quando precisar, pelo celular, tablet ou computador.",
+    title: "Use quando precisar",
+    text: "Material digital para consultar sempre que surgir uma necessidade.",
   },
-  {
-    icon: CalendarCheck,
-    title: "Para Diferentes Momentos",
-    text: "Use as dinâmicas em integrações, treinamentos, reuniões, atividades de equipe e outros momentos do dia a dia do RH.",
-  },
-];
-
-const benefits = [
-  { icon: Clock, text: "Economize tempo no planejamento" },
-  { icon: BookOpenCheck, text: "Tenha atividades prontas para diferentes situações" },
-  { icon: Presentation, text: "Torne treinamentos mais participativos" },
-  { icon: Users, text: "Estimule interação e trabalho em equipe" },
-  { icon: Handshake, text: "Facilite reuniões e integrações" },
-  { icon: Lightbulb, text: "Tenha novas ideias sempre que precisar" },
 ];
 
 const bonuses = [
   {
     tag: "Bônus 1",
-    title: "Certificado de Conclusão",
-    text: "Receba seu certificado de conclusão para registrar sua participação e capacitação no conteúdo.",
+    title: "Manual de Gestão de Recursos Humanos",
+    text: "Um material complementar para ampliar seus conhecimentos e apoiar sua atuação na área de RH.",
   },
   {
     tag: "Bônus 2",
-    title: "Manual de Gestão de Recursos Humanos",
-    text: "Um material prático para ampliar seus conhecimentos e ter mais suporte na rotina de gestão de pessoas.",
+    title: "Como melhorar a comunicação em público (livre-se da timidez)",
+    text: "Aprenda estratégias para se comunicar melhor, falar com mais segurança e desenvolver sua comunicação.",
   },
-  {
-    tag: "Bônus 3",
-    title: "Como Melhorar a Comunicação em Público (Livre-se da Timidez)",
-    text: "Aprenda estratégias para se comunicar com mais segurança, controlar a timidez e transmitir suas ideias com mais clareza e confiança.",
-  },
+];
+
+const useCases = [
+  { icon: UserPlus, label: "Integração de novos colaboradores" },
+  { icon: Presentation, label: "Treinamentos" },
+  { icon: CalendarCheck, label: "Reuniões" },
+  { icon: Users, label: "Trabalho em equipe" },
+  { icon: HeartHandshake, label: "Desenvolvimento de pessoas" },
+  { icon: MessagesSquare, label: "Comunicação" },
+  { icon: Target, label: "Motivação" },
+  { icon: Layers, label: "Atividades em grupo" },
+];
+
+const benefits = [
+  "Economize tempo",
+  "Tenha atividades prontas",
+  "Evite improvisos",
+  "Aumente a interação da equipe",
+  "Torne treinamentos mais dinâmicos",
+  "Tenha novas ideias sempre à mão",
 ];
 
 const packageItems = [
   "+500 Dinâmicas Prontas para RH",
-  "Certificado de Conclusão",
-  "Manual de Gestão de Recursos Humanos",
-  "Como Melhorar a Comunicação em Público",
-  "Acesso digital aos materiais",
+  "+ Certificado de Conclusão",
+  "+ Manual de Gestão de Recursos Humanos",
+  "+ Como melhorar a comunicação em público",
 ];
 
 function LandingPage() {
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
-      {/* 1. BARRA DE DESTAQUE */}
+      {/* BARRA DE DESTAQUE */}
       <div className="bg-brand-gradient px-4 py-2.5 text-center">
         <p className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-brand-foreground sm:text-sm">
-          🔥 Oferta especial para profissionais de RH
+          Oferta especial para profissionais de RH
         </p>
       </div>
 
-      {/* 2. HERO */}
+      {/* HERO */}
       <header className="bg-surface-gradient relative overflow-hidden border-b border-border">
         <div
           aria-hidden
@@ -139,20 +162,19 @@ function LandingPage() {
         <div className="relative mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-14 lg:py-20">
           <div>
             <Reveal>
-              <SectionLabel>Conteúdo prático para RH</SectionLabel>
-              <h1 className="text-balance-tight mt-5 text-3xl font-extrabold leading-[1.1] text-brand sm:text-5xl">
-                +500 Dinâmicas Prontas para RH{" "}
-                <span className="text-teal">Com Certificado Incluso</span> + Bônus
+              <SectionLabel>Material digital para RH</SectionLabel>
+              <h1 className="text-balance-tight mt-5 text-3xl font-extrabold uppercase leading-[1.08] text-brand sm:text-5xl">
+                +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
               </h1>
               <p className="mt-5 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
-                Tenha dinâmicas prontas para aplicar em treinamentos, integrações, reuniões e
-                atividades de equipe, sem perder horas criando tudo do zero.
+                Tenha dinâmicas prontas para tornar treinamentos, integrações e momentos com sua
+                equipe muito mais práticos e envolventes.
               </p>
             </Reveal>
 
             <Reveal delay={120}>
               <ul className="mt-7 grid gap-3 sm:grid-cols-2">
-                {heroBenefits.map((b) => (
+                {heroHighlights.map((b) => (
                   <li
                     key={b}
                     className="flex items-start gap-2.5 text-sm font-semibold text-brand sm:text-base"
@@ -167,7 +189,7 @@ function LandingPage() {
             <Reveal delay={200} className="mt-9">
               <CtaButton pulse>Quero acessar agora</CtaButton>
               <p className="mt-3 text-xs text-muted-foreground sm:text-sm">
-                🔒 Acesso digital • Pagamento seguro • Conteúdo pronto para usar
+                Acesso rápido e fácil após a confirmação do pagamento.
               </p>
             </Reveal>
           </div>
@@ -176,7 +198,7 @@ function LandingPage() {
             <div className="relative rounded-3xl bg-card p-3 shadow-card ring-1 ring-border">
               <img
                 src={imgMockupMain}
-                alt="Mockup do material +500 Dinâmicas Prontas para RH em tablet, manual impresso e cartões em PDF"
+                alt="Mockup do material digital +500 Dinâmicas Prontas para RH em tablet e PDFs"
                 width={1200}
                 height={912}
                 className="h-auto w-full rounded-2xl"
@@ -186,66 +208,61 @@ function LandingPage() {
         </div>
       </header>
 
-      {/* 3. VSL */}
-      <section className="bg-brand-gradient px-5 py-12 sm:py-16" id="vsl">
-        <div className="mx-auto max-w-4xl text-center">
-          <Reveal>
-            <p className="text-sm font-bold uppercase tracking-[0.12em] text-brand-foreground sm:text-base">
-              ▶️ Assista ao vídeo e veja tudo o que você vai receber
+      {/* PROBLEMA */}
+      <section className="px-5 py-14 sm:py-20">
+        <div className="mx-auto max-w-4xl">
+          <Reveal className="text-center">
+            <SectionLabel>A rotina real do RH</SectionLabel>
+            <SectionTitle className="mt-4">Cansado de precisar criar dinâmicas do zero?</SectionTitle>
+          </Reveal>
+
+          <div className="mt-9 grid gap-3">
+            {problems.map((p, i) => (
+              <Reveal key={p} delay={i * 60}>
+                <div className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft sm:p-5">
+                  <span
+                    aria-hidden
+                    className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-destructive/10 text-sm font-bold text-destructive"
+                  >
+                    ✕
+                  </span>
+                  <p className="min-w-0 text-sm leading-snug text-brand sm:text-base">{p}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={120}>
+            <p className="mt-8 rounded-3xl border border-teal/20 bg-brand-soft p-6 text-center text-base leading-relaxed font-semibold text-brand sm:text-lg">
+              Com um material pronto, você economiza tempo e encontra atividades para diferentes
+              momentos da rotina de RH.
             </p>
-          </Reveal>
-          <Reveal delay={100} className="mt-6">
-            <div className="overflow-hidden rounded-3xl border border-brand-foreground/15 bg-brand-foreground/5 shadow-card">
-              <div className="relative aspect-video w-full">
-                {vsl.embedUrl ? (
-                  <iframe
-                    src={vsl.embedUrl}
-                    title="Vídeo de apresentação do pacote +500 Dinâmicas Prontas para RH"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    loading="lazy"
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
-                ) : (
-                  <div className="absolute inset-0 grid place-items-center gap-3 p-6 text-center">
-                    <span className="grid h-16 w-16 place-items-center rounded-full bg-cta text-2xl text-cta-foreground shadow-cta">
-                      ▶
-                    </span>
-                    <p className="text-sm font-semibold text-brand-foreground/80">
-                      Espaço reservado para a VSL
-                    </p>
-                  </div>
-                )}
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={160} className="mt-8 flex flex-col items-center">
-            <CtaButton>Quero acessar agora</CtaButton>
           </Reveal>
         </div>
       </section>
 
-      {/* 4. O QUE VOCÊ VAI RECEBER */}
-      <section className="px-5 py-14 sm:py-20">
+      {/* SOLUÇÃO */}
+      <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
         <div className="mx-auto max-w-6xl">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <SectionLabel>Conteúdo do pacote</SectionLabel>
-            <SectionTitle className="mt-4">O que você vai receber</SectionTitle>
+          <Reveal className="mx-auto max-w-3xl text-center">
+            <SectionLabel>A solução</SectionLabel>
+            <SectionTitle className="mt-4">
+              Tudo o que você precisa para ter dinâmicas prontas para diferentes situações
+            </SectionTitle>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Um pacote completo de materiais práticos para facilitar sua rotina no RH e ajudar você
-              a tornar treinamentos, reuniões e atividades com equipes muito mais dinâmicos e
-              envolventes.
+              O material reúne mais de 500 dinâmicas organizadas para facilitar a utilização por
+              profissionais de RH em treinamentos, integrações, reuniões e atividades de equipe.
             </p>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {deliverables.map((d, i) => (
-              <Reveal key={d.title} delay={i * 80}>
-                <article className="h-full rounded-3xl border border-border bg-card p-6 shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-card sm:p-7">
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {solutions.map((d, i) => (
+              <Reveal key={d.title} delay={i * 70}>
+                <article className="h-full rounded-3xl border border-border bg-card p-6 shadow-soft transition-all duration-200 hover:-translate-y-1 hover:shadow-card">
                   <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-soft text-teal">
                     <d.icon className="h-6 w-6" strokeWidth={1.8} aria-hidden />
                   </span>
-                  <h3 className="mt-5 text-lg font-bold text-brand sm:text-xl">{d.title}</h3>
+                  <h3 className="mt-5 text-lg font-bold text-brand">{d.title}</h3>
                   <p className="mt-2.5 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {d.text}
                   </p>
@@ -253,79 +270,166 @@ function LandingPage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={140} className="mt-10 flex flex-col items-center">
+            <CtaButton>Quero acessar agora</CtaButton>
+          </Reveal>
         </div>
       </section>
 
-      {/* 5. BENEFÍCIOS */}
-      <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
+      {/* O QUE VOCÊ VAI RECEBER */}
+      <section className="px-5 py-14 sm:py-20">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
-            <SectionTitle>Mais praticidade para a sua rotina de RH</SectionTitle>
+            <SectionLabel>Conteúdo da compra</SectionLabel>
+            <SectionTitle className="mt-4">Veja tudo o que está incluso na sua compra</SectionTitle>
           </Reveal>
 
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {benefits.map((b, i) => (
-              <Reveal key={b.text} delay={i * 70}>
-                <div className="flex h-full items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-soft transition-shadow duration-200 hover:shadow-card">
-                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-teal/10 text-teal">
-                    <b.icon className="h-5 w-5" strokeWidth={1.9} aria-hidden />
+          {/* PRODUTO PRINCIPAL */}
+          <Reveal delay={80} className="mt-10">
+            <article className="grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 lg:grid-cols-2 lg:gap-12">
+              <div className="order-2 lg:order-1">
+                <span className="inline-flex rounded-full bg-teal/12 px-3.5 py-1.5 text-[0.65rem] font-extrabold uppercase tracking-[0.16em] text-teal">
+                  Produto principal
+                </span>
+                <h3 className="text-balance-tight mt-4 text-2xl font-extrabold uppercase leading-tight text-brand sm:text-3xl">
+                  +500 Dinâmicas Prontas para RH
+                </h3>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Um grande acervo de dinâmicas prontas para utilizar em treinamentos, integrações,
+                  reuniões, atividades em grupo e desenvolvimento de equipes.
+                </p>
+                <p className="mt-6 inline-flex rounded-2xl bg-brand-gradient px-5 py-3 font-display text-xl font-extrabold uppercase tracking-tight text-brand-foreground sm:text-2xl">
+                  +500 dinâmicas
+                </p>
+              </div>
+              <div className="order-1 lg:order-2">
+                <img
+                  src={imgMockupMain}
+                  alt="Mockup do acervo +500 Dinâmicas Prontas para RH"
+                  width={1200}
+                  height={912}
+                  loading="lazy"
+                  className="h-auto w-full rounded-2xl"
+                />
+              </div>
+            </article>
+          </Reveal>
+
+          {/* INCLUSO: CERTIFICADO */}
+          <Reveal delay={120} className="mt-6">
+            <article className="flex flex-col items-start gap-4 rounded-3xl border border-teal/25 bg-brand-soft p-6 sm:flex-row sm:items-center sm:p-8">
+              <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-card text-teal shadow-soft">
+                <Award className="h-7 w-7" strokeWidth={1.7} aria-hidden />
+              </span>
+              <div className="min-w-0">
+                <span className="inline-flex rounded-full bg-teal px-3 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-teal-foreground">
+                  Incluso na oferta
+                </span>
+                <h3 className="mt-3 text-lg font-bold text-brand sm:text-xl">
+                  Certificado de Conclusão
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  Receba seu certificado de conclusão junto com o material.
+                </p>
+              </div>
+            </article>
+          </Reveal>
+
+          {/* BÔNUS */}
+          <Reveal delay={160} className="mt-10 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+              <Sparkles className="h-3.5 w-3.5" aria-hidden /> E ainda: 2 bônus especiais
+            </span>
+          </Reveal>
+
+          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            {bonuses.map((b, i) => (
+              <Reveal key={b.tag} delay={i * 90}>
+                <article className="h-full rounded-3xl border border-border bg-card p-6 shadow-soft transition-transform duration-200 hover:-translate-y-1 sm:p-7">
+                  <span className="inline-flex rounded-full bg-cta/90 px-3 py-1 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+                    {b.tag}
                   </span>
-                  <p className="min-w-0 pt-1.5 text-sm font-semibold leading-snug text-brand sm:text-base">
+                  <h3 className="text-balance-tight mt-4 text-lg font-bold leading-snug text-brand sm:text-xl">
+                    {b.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
                     {b.text}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal delay={120} className="mx-auto mt-8 max-w-3xl">
+            <img
+              src={imgMockupBonus}
+              alt="Mockups dos materiais bônus: manual de gestão de recursos humanos e comunicação em público"
+              width={1200}
+              height={800}
+              loading="lazy"
+              className="h-auto w-full"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ONDE USAR */}
+      <section className="bg-brand-gradient px-5 py-14 sm:py-20">
+        <div className="mx-auto max-w-6xl">
+          <Reveal className="mx-auto max-w-2xl text-center">
+            <SectionTitle invert>Onde você pode usar as dinâmicas?</SectionTitle>
+            <p className="mt-4 text-base leading-relaxed text-brand-foreground/70">
+              Tenha diferentes opções para escolher a atividade certa de acordo com o momento e o
+              objetivo da sua equipe.
+            </p>
+          </Reveal>
+
+          <div className="mt-10 grid grid-cols-2 gap-4 lg:grid-cols-4">
+            {useCases.map((u, i) => (
+              <Reveal key={u.label} delay={i * 50}>
+                <div className="flex h-full flex-col items-center gap-3 rounded-2xl border border-brand-foreground/12 bg-brand-foreground/8 p-5 text-center backdrop-blur-sm">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-brand-foreground/12 text-brand-foreground">
+                    <u.icon className="h-6 w-6" strokeWidth={1.8} aria-hidden />
+                  </span>
+                  <p className="min-w-0 text-sm font-semibold leading-snug text-brand-foreground">
+                    {u.label}
                   </p>
                 </div>
               </Reveal>
             ))}
           </div>
-
-          <Reveal delay={120}>
-            <p className="mx-auto mt-10 max-w-3xl rounded-3xl border border-teal/20 bg-card p-6 text-center text-base leading-relaxed text-brand shadow-soft sm:text-lg">
-              Em vez de começar cada treinamento ou atividade do zero, tenha um acervo completo de
-              dinâmicas prontas para consultar quando precisar.
-            </p>
-          </Reveal>
         </div>
       </section>
 
-      {/* 6. DESTAQUE DO PRODUTO */}
+      {/* BENEFÍCIOS */}
       <section className="px-5 py-14 sm:py-20">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
-            <SectionLabel>Acervo completo</SectionLabel>
-            <SectionTitle className="mt-4">
-              Mais de 500 dinâmicas prontas para você usar
-            </SectionTitle>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground sm:text-lg">
-              Uma coleção completa para você encontrar rapidamente uma dinâmica adequada para
-              diferentes objetivos e momentos com sua equipe.
-            </p>
-            <ul className="mt-6 grid gap-3">
-              {[
-                "Integração de novos colaboradores",
-                "Treinamentos e workshops internos",
-                "Reuniões de equipe mais participativas",
-                "Comunicação, liderança e trabalho em equipe",
-              ].map((t) => (
-                <li key={t} className="flex items-start gap-2.5 text-sm text-brand sm:text-base">
+            <SectionLabel>Benefícios</SectionLabel>
+            <SectionTitle className="mt-4">Mais praticidade para a sua rotina de RH</SectionTitle>
+            <ul className="mt-7 grid gap-3">
+              {benefits.map((t) => (
+                <li
+                  key={t}
+                  className="flex items-start gap-3 rounded-2xl border border-border bg-card p-4 text-sm font-semibold text-brand shadow-soft sm:text-base"
+                >
                   <Check />
                   <span className="min-w-0">{t}</span>
                 </li>
               ))}
             </ul>
             <div className="mt-8">
-              <CtaButton>Quero ter acesso às +500 dinâmicas</CtaButton>
+              <CtaButton>Quero acessar as +500 dinâmicas</CtaButton>
             </div>
           </Reveal>
 
           <Reveal delay={100} className="order-1 lg:order-2">
             <div className="relative">
-              <div
-                aria-hidden
-                className="absolute inset-6 rounded-[2.5rem] bg-teal/10 blur-2xl"
-              />
+              <div aria-hidden className="absolute inset-6 rounded-[2.5rem] bg-teal/10 blur-2xl" />
               <img
                 src={imgTeam}
-                alt="Equipe de profissionais em roda durante uma dinâmica de treinamento corporativo"
+                alt="Profissionais reunidos durante uma dinâmica de treinamento corporativo"
                 width={1408}
                 height={1008}
                 loading="lazy"
@@ -336,94 +440,25 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* 7. BÔNUS */}
-      <section className="bg-brand-gradient px-5 py-14 sm:py-20">
-        <div className="mx-auto max-w-6xl">
-          <Reveal className="mx-auto max-w-2xl text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.7rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
-              <Sparkles className="h-3.5 w-3.5" aria-hidden /> Bônus inclusos
-            </span>
-            <SectionTitle invert className="mt-5">
-              E ainda tem mais...
-            </SectionTitle>
-            <p className="mt-4 text-base leading-relaxed text-brand-foreground/70">
-              Além das +500 Dinâmicas Prontas para RH, você também recebe estes bônus:
-            </p>
-          </Reveal>
-
-          <Reveal delay={80} className="mx-auto mt-10 max-w-3xl">
-            <img
-              src={imgMockupBonus}
-              alt="Mockups dos bônus: certificado de conclusão, manual de gestão de recursos humanos e material de comunicação em público"
-              width={1200}
-              height={800}
-              loading="lazy"
-              className="h-auto w-full"
-            />
-          </Reveal>
-
-          <div className="mt-8 grid gap-5 lg:grid-cols-3">
-            {bonuses.map((b, i) => (
-              <Reveal key={b.tag} delay={i * 90}>
-                <article className="h-full rounded-3xl border border-brand-foreground/12 bg-brand-foreground/8 p-6 backdrop-blur-sm transition-transform duration-200 hover:-translate-y-1 sm:p-7">
-                  <span className="inline-flex rounded-full bg-cta/90 px-3 py-1 text-[0.65rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
-                    {b.tag}
-                  </span>
-                  <h3 className="mt-4 text-lg font-bold leading-snug text-brand-foreground sm:text-xl">
-                    {b.title} <span aria-hidden>✅</span>
-                  </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-brand-foreground/70 sm:text-base">
-                    {b.text}
-                  </p>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 8. VALOR */}
-      <section className="px-5 py-14 sm:py-20">
-        <div className="mx-auto max-w-4xl text-center">
-          <Reveal>
-            <SectionLabel>Pacote completo</SectionLabel>
-            <SectionTitle className="mt-4">Um pacote completo para facilitar sua rotina</SectionTitle>
-            <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground">
-              Tudo reunido em um único pacote para você ter mais praticidade na hora de preparar
-              treinamentos, reuniões, integrações e atividades com equipes.
-            </p>
-          </Reveal>
-
-          <Reveal delay={100} className="mt-9 grid gap-3 text-left sm:grid-cols-2">
-            {[
-              { icon: Layers, label: "+500 Dinâmicas Prontas para RH" },
-              { icon: BookOpenCheck, label: "+ Certificado de Conclusão" },
-              { icon: Users, label: "+ Manual de Gestão de Recursos Humanos" },
-              { icon: MessagesSquare, label: "+ Como Melhorar a Comunicação em Público" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-3 rounded-2xl border border-border bg-card p-4 shadow-soft"
-              >
-                <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-soft text-teal">
-                  <item.icon className="h-5 w-5" strokeWidth={1.9} aria-hidden />
-                </span>
-                <p className="min-w-0 text-sm font-bold text-brand sm:text-base">{item.label}</p>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* 9. OFERTA */}
-      <section id="oferta" className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
+      {/* OFERTA */}
+      <section
+        id="oferta"
+        className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20"
+      >
         <div className="mx-auto max-w-3xl">
-          <Reveal>
+          <Reveal className="text-center">
+            <SectionLabel>Oferta completa</SectionLabel>
+            <SectionTitle className="mt-4">
+              Leve o pacote completo para sua rotina de RH
+            </SectionTitle>
+          </Reveal>
+
+          <Reveal delay={100} className="mt-9">
             <div className="overflow-hidden rounded-[2rem] border border-border bg-card shadow-card">
               <div className="bg-brand-gradient px-6 py-6 text-center sm:px-10">
-                <h2 className="text-xl font-extrabold uppercase tracking-tight text-brand-foreground sm:text-3xl">
+                <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand-foreground sm:text-2xl">
                   Acesso completo ao pacote
-                </h2>
+                </p>
               </div>
 
               <div className="px-6 py-8 sm:px-10 sm:py-10">
@@ -462,8 +497,8 @@ function LandingPage() {
 
                 <div className="mt-7 flex flex-col items-center">
                   <CtaButton pulse>Quero garantir meu acesso</CtaButton>
-                  <p className="mt-3 text-xs font-semibold text-muted-foreground sm:text-sm">
-                    🔒 Compra segura
+                  <p className="mt-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
+                    Pagamento seguro • Acesso digital • Liberação após confirmação
                   </p>
                 </div>
               </div>
@@ -472,27 +507,24 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* 10. ESCASSEZ / URGÊNCIA */}
+      {/* URGÊNCIA */}
       <section className="bg-brand-gradient px-5 py-12 sm:py-16">
         <div className="mx-auto max-w-3xl text-center">
           <Reveal>
             <p className="font-display text-xl font-extrabold uppercase tracking-tight text-cta sm:text-2xl">
-              🔥 Oferta especial
+              Oferta especial
             </p>
             <p className="mt-3 text-base text-brand-foreground/75 sm:text-lg">
               Garanta seu acesso enquanto esta condição estiver disponível.
             </p>
           </Reveal>
-          <Reveal delay={100} className="mt-7">
-            <Countdown />
-          </Reveal>
-          <Reveal delay={160} className="mt-8 flex flex-col items-center">
+          <Reveal delay={140} className="mt-8 flex flex-col items-center">
             <CtaButton>Quero garantir meu acesso</CtaButton>
           </Reveal>
         </div>
       </section>
 
-      {/* 11. GARANTIA */}
+      {/* GARANTIA / COMPRA SEGURA */}
       <section className="px-5 py-14 sm:py-20">
         <Reveal className="mx-auto max-w-3xl">
           <div className="flex flex-col items-center gap-5 rounded-3xl border border-border bg-card p-8 text-center shadow-soft sm:p-10">
@@ -511,12 +543,12 @@ function LandingPage() {
         </Reveal>
       </section>
 
-      {/* 12. FAQ */}
+      {/* FAQ */}
       <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
         <div className="mx-auto max-w-3xl">
           <Reveal className="text-center">
             <SectionLabel>FAQ</SectionLabel>
-            <SectionTitle className="mt-4">Dúvidas frequentes</SectionTitle>
+            <SectionTitle className="mt-4">Perguntas frequentes</SectionTitle>
           </Reveal>
           <Reveal delay={100} className="mt-8">
             <Accordion type="single" collapsible className="grid gap-3">
@@ -539,24 +571,25 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* 13. CTA FINAL */}
+      {/* CTA FINAL */}
       <section className="bg-brand-gradient px-5 py-16 sm:py-24">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <SectionTitle invert>Pronto para facilitar sua rotina no RH?</SectionTitle>
+          <SectionTitle invert>
+            Tenha +500 dinâmicas prontas para facilitar sua rotina de RH
+          </SectionTitle>
           <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-brand-foreground/75 sm:text-lg">
-            Tenha +500 dinâmicas prontas e materiais extras para tornar seus treinamentos, reuniões
-            e atividades com equipes muito mais práticos e envolventes.
+            Mais praticidade, mais opções e menos tempo criando atividades do zero.
           </p>
           <div className="mt-9 flex flex-col items-center">
-            <CtaButton pulse>Quero acessar agora</CtaButton>
+            <CtaButton pulse>Quero acessar as +500 dinâmicas</CtaButton>
             <p className="mt-3 text-xs text-brand-foreground/60 sm:text-sm">
-              🔒 Acesso digital • Pagamento seguro
+              Acesso digital • Certificado incluso • Bônus inclusos
             </p>
           </div>
         </Reveal>
       </section>
 
-      {/* 14. RODAPÉ */}
+      {/* RODAPÉ */}
       <footer className="px-5 py-10">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
