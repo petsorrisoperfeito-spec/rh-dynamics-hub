@@ -689,9 +689,13 @@ function LandingPage() {
         open={upsellOpen}
         onOpenChange={(open) => {
           setUpsellOpen(open);
-          if (!open) go(plans.basic.checkoutUrl);
+          if (!open) {
+            navigatingRef.current = true;
+            go(plans.basic.checkoutUrl);
+          }
         }}
       >
+
         <DialogContent className="max-w-[92vw] rounded-3xl border-2 border-cta bg-card p-6 text-center sm:max-w-md sm:p-8">
           <span
             aria-hidden
