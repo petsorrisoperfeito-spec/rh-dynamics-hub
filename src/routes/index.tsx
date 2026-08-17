@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   CalendarCheck,
   Crown,
@@ -194,10 +194,30 @@ const packageItems = [
 function LandingPage() {
   const today = useTodayLabel();
   const [upsellOpen, setUpsellOpen] = useState(false);
+  const navigatingRef = useRef(false);
 
   const go = (url: string) => {
     window.location.href = url;
   };
+
+  /**
+   * Ao voltar do checkout (inclusive via cache de navegação do browser), garante
+   * que o modal esteja fechado e que nenhum bloqueio de clique/scroll continue ativo.
+   */
+  useEffect(() => {
+    const reset = () => {
+      navigatingRef.current = false;
+      setUpsellOpen(false);
+      const { body } = document;
+      body.style.pointerEvents = "";
+      body.style.overflow = "";
+      body.removeAttribute("data-scroll-locked");
+      body.removeAttribute("aria-hidden");
+    };
+    window.addEventListener("pageshow", reset);
+    return () => window.removeEventListener("pageshow", reset);
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">
@@ -220,15 +240,16 @@ function LandingPage() {
             +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
           </h1>
 
-          <div className="mt-4 w-full max-w-[16rem] rounded-2xl bg-card p-2 shadow-card ring-1 ring-border sm:max-w-sm lg:max-w-md">
+          <div className="mt-4 w-full max-w-[16rem] sm:max-w-sm lg:max-w-md">
             <img
               src={imgMockupMain}
               alt="Mockup do material digital +500 Dinâmicas Prontas para RH em tablet e PDFs"
               width={1200}
               height={912}
-              className="h-auto w-full rounded-xl"
+              className="h-auto w-full object-contain"
             />
           </div>
+
 
           <ul className="mt-4 grid w-full max-w-xl grid-cols-2 gap-x-4 gap-y-2 text-left">
             {heroHighlights.map((b) => (
@@ -295,19 +316,17 @@ function LandingPage() {
             <SectionTitle className="mt-4">Bônus</SectionTitle>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {bonuses.map((b, i) => (
               <Reveal key={b.title} delay={i * 80}>
-                <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-5 text-center shadow-soft transition-transform duration-200 hover:-translate-y-1 sm:p-6">
-                  <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-surface p-2">
-                    <img
-                      src={b.image}
-                      alt={`Imagem do bônus ${b.title}`}
-                      loading="lazy"
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-                  <span className="mt-4 inline-flex self-center rounded-full bg-cta/90 px-3 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+                <article className="flex h-full flex-col items-center text-center">
+                  <img
+                    src={b.image}
+                    alt={`Imagem do bônus ${b.title}`}
+                    loading="lazy"
+                    className="h-auto w-auto max-h-56 max-w-full object-contain sm:max-h-64"
+                  />
+                  <span className="mt-5 inline-flex rounded-full bg-cta/90 px-3 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
                     {b.tag}
                   </span>
                   <h3 className="text-balance-tight mt-3 text-base font-bold leading-snug text-brand sm:text-lg">
@@ -323,6 +342,7 @@ function LandingPage() {
               </Reveal>
             ))}
           </div>
+
         </div>
       </section>
 
@@ -340,18 +360,16 @@ function LandingPage() {
               <CarouselContent>
                 {previews.map((p) => (
                   <CarouselItem key={p.src} className="sm:basis-1/2">
-                    <figure className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
-                      <figcaption className="border-b border-border bg-brand-soft px-4 py-2.5 text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-brand sm:text-[0.7rem]">
+                    <figure className="flex h-full flex-col items-center px-2">
+                      <figcaption className="text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-teal sm:text-[0.7rem]">
                         {p.tag}
                       </figcaption>
-                      <div className="flex aspect-[4/5] w-full items-center justify-center bg-surface p-2 sm:p-3">
-                        <img
-                          src={p.src}
-                          alt={p.alt}
-                          loading="lazy"
-                          className="h-full w-full object-contain"
-                        />
-                      </div>
+                      <img
+                        src={p.src}
+                        alt={p.alt}
+                        loading="lazy"
+                        className="mt-3 h-auto w-auto max-h-[22rem] max-w-full object-contain sm:max-h-[26rem]"
+                      />
                     </figure>
                   </CarouselItem>
                 ))}
@@ -360,6 +378,7 @@ function LandingPage() {
               <CarouselNext className="right-1 sm:-right-5" />
             </Carousel>
           </Reveal>
+
 
 
           <Reveal delay={120} className="mt-6">
@@ -472,11 +491,10 @@ function LandingPage() {
                 <p className="text-center font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
-                <div className="mt-4 flex min-h-[5.5rem] items-center justify-center rounded-2xl bg-surface px-4 py-3">
-                  <p className="animate-pulse-zoom origin-center text-center font-display text-3xl font-extrabold text-cta sm:text-4xl">
-                    {plans.basic.price}
-                  </p>
-                </div>
+                <p className="animate-pulse-zoom mt-4 origin-center text-center font-display text-3xl font-extrabold text-cta sm:text-4xl">
+                  {plans.basic.price}
+                </p>
+
 
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
@@ -522,11 +540,10 @@ function LandingPage() {
                 <p className="mt-3 text-center font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.complete.name}
                 </p>
-                <div className="mt-4 flex min-h-[5.5rem] items-center justify-center rounded-2xl bg-cta/10 px-4 py-3">
-                  <p className="animate-pulse-zoom origin-center text-center font-display text-4xl font-extrabold text-cta sm:text-5xl">
-                    {plans.complete.price}
-                  </p>
-                </div>
+                <p className="animate-pulse-zoom mt-4 origin-center text-center font-display text-4xl font-extrabold text-cta sm:text-5xl">
+                  {plans.complete.price}
+                </p>
+
 
 
                 <ul className="mt-6 grid gap-3">
@@ -689,9 +706,13 @@ function LandingPage() {
         open={upsellOpen}
         onOpenChange={(open) => {
           setUpsellOpen(open);
-          if (!open) go(plans.basic.checkoutUrl);
+          if (!open) {
+            navigatingRef.current = true;
+            go(plans.basic.checkoutUrl);
+          }
         }}
       >
+
         <DialogContent className="max-w-[92vw] rounded-3xl border-2 border-cta bg-card p-6 text-center sm:max-w-md sm:p-8">
           <span
             aria-hidden
