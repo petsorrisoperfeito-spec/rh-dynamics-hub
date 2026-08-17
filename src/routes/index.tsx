@@ -715,6 +715,47 @@ function LandingPage() {
           Quero acessar agora
         </CtaButton>
       </div>
+
+      {/* POP-UP DE UPGRADE PARA O PLANO PREMIUM */}
+      <Dialog
+        open={upsellOpen}
+        onOpenChange={(open) => {
+          setUpsellOpen(open);
+          if (!open) go(plans.basic.checkoutUrl);
+        }}
+      >
+        <DialogContent className="max-w-[92vw] rounded-3xl border-2 border-cta bg-card p-6 text-center sm:max-w-md sm:p-8">
+          <span
+            aria-hidden
+            className="animate-pulse-zoom mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-cta/12 text-3xl"
+          >
+            🎁
+          </span>
+          <DialogTitle className="text-balance-tight mt-2 font-display text-lg font-extrabold uppercase leading-tight tracking-tight text-brand sm:text-xl">
+            Espere! Tem um presentinho para você
+          </DialogTitle>
+          <DialogDescription className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Leve o <strong className="text-brand">Plano Premium</strong> por apenas{" "}
+            <strong className="text-cta">{plans.premium.price}</strong>. Aproveite essa condição
+            especial antes de finalizar sua compra.
+          </DialogDescription>
+          <div className="mt-2 grid gap-3">
+            <a
+              href={plans.premium.checkoutUrl}
+              className="animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl bg-cta px-5 py-4 font-display text-sm font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:text-base"
+            >
+              🎁 Quero o Plano Premium
+            </a>
+            <a
+              href={plans.basic.checkoutUrl}
+              className="text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+            >
+              Não, quero apenas o Plano Básico
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
+
     </div>
   );
 }
