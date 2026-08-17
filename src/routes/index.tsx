@@ -530,8 +530,13 @@ function LandingPage() {
                   Sem os bônus
                 </p>
                 <div className="mt-6">
-                  <PlanButton href={plans.basic.checkoutUrl} variant="outline" />
+                  <PlanButton
+                    variant="outline"
+                    label="Quero o Plano Básico"
+                    onClick={() => setUpsellOpen(true)}
+                  />
                 </div>
+
               </article>
 
             </Reveal>
