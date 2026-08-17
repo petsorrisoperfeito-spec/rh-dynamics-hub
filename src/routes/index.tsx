@@ -29,12 +29,6 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
   CtaButton,
   Check,
   PlanButton,
@@ -194,7 +188,6 @@ const packageItems = [
 function LandingPage() {
   const today = useTodayLabel();
   const [upsellOpen, setUpsellOpen] = useState(false);
-  const [dialogKey, setDialogKey] = useState(0);
   const checkoutTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const clearDialogLocks = useCallback(() => {
@@ -225,7 +218,6 @@ function LandingPage() {
         checkoutTimerRef.current = null;
       }
       setUpsellOpen(false);
-      setDialogKey((key) => key + 1);
       clearDialogLocks();
     };
     window.addEventListener("pageshow", reset);
@@ -719,51 +711,73 @@ function LandingPage() {
       </footer>
 
       {/* POP-UP DE UPGRADE PARA O PLANO PREMIUM */}
-      <Dialog
-        key={dialogKey}
-        open={upsellOpen}
-        onOpenChange={setUpsellOpen}
-      >
-
-        <DialogContent className="max-w-[92vw] rounded-3xl border-2 border-cta bg-card p-6 text-center sm:max-w-md sm:p-8">
-          <span
-            aria-hidden
-            className="animate-pulse-zoom mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-cta/12 text-3xl"
+      {upsellOpen && (
+        <div
+          className="fixed inset-0 z-50 grid place-items-center bg-foreground/80 p-4"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setUpsellOpen(false);
+          }}
+        >
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="upsell-title"
+            aria-describedby="upsell-description"
+            className="relative grid w-full max-w-[92vw] gap-4 rounded-3xl border-2 border-cta bg-card p-6 text-center shadow-lg sm:max-w-md sm:p-8"
           >
-            🎁
-          </span>
-          <DialogTitle className="text-balance-tight mt-2 font-display text-lg font-extrabold uppercase leading-tight tracking-tight text-brand sm:text-xl">
-            Espere! Tem um presentinho para você
-          </DialogTitle>
-          <DialogDescription className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-            Leve o <strong className="text-brand">Plano Premium</strong> por apenas{" "}
-            <strong className="text-cta">{plans.premium.price}</strong>. Aproveite essa condição
-            especial antes de finalizar sua compra.
-          </DialogDescription>
-          <div className="mt-2 grid gap-3">
-            <a
-              href={plans.premium.checkoutUrl}
-              onClick={(event) => {
-                event.preventDefault();
-                goToCheckout(plans.premium.checkoutUrl);
-              }}
-              className="animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl bg-cta px-5 py-4 font-display text-sm font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:text-base"
+            <button
+              type="button"
+              aria-label="Fechar"
+              onClick={() => setUpsellOpen(false)}
+              className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-sm text-muted-foreground transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
-              🎁 Quero o Plano Premium
-            </a>
-            <a
-              href={plans.basic.checkoutUrl}
-              onClick={(event) => {
-                event.preventDefault();
-                goToCheckout(plans.basic.checkoutUrl);
-              }}
-              className="text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+              <X className="h-4 w-4" />
+            </button>
+            <span
+              aria-hidden
+              className="animate-pulse-zoom mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-cta/12 text-3xl"
             >
-              Não, quero apenas o Plano Básico
-            </a>
+              🎁
+            </span>
+            <h2
+              id="upsell-title"
+              className="text-balance-tight mt-2 font-display text-lg font-extrabold uppercase leading-tight tracking-tight text-brand sm:text-xl"
+            >
+              Espere! Tem um presentinho para você
+            </h2>
+            <p
+              id="upsell-description"
+              className="text-sm leading-relaxed text-muted-foreground sm:text-base"
+            >
+              Leve o <strong className="text-brand">Plano Premium</strong> por apenas{" "}
+              <strong className="text-cta">{plans.premium.price}</strong>. Aproveite essa condição
+              especial antes de finalizar sua compra.
+            </p>
+            <div className="mt-2 grid gap-3">
+              <a
+                href={plans.premium.checkoutUrl}
+                onClick={(event) => {
+                  event.preventDefault();
+                  goToCheckout(plans.premium.checkoutUrl);
+                }}
+                className="animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl bg-cta px-5 py-4 font-display text-sm font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:text-base"
+              >
+                🎁 Quero o Plano Premium
+              </a>
+              <a
+                href={plans.basic.checkoutUrl}
+                onClick={(event) => {
+                  event.preventDefault();
+                  goToCheckout(plans.basic.checkoutUrl);
+                }}
+                className="text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+              >
+                Não, quero apenas o Plano Básico
+              </a>
+            </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </div>
+      )}
 
     </div>
   );
