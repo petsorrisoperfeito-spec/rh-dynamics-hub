@@ -193,6 +193,11 @@ const packageItems = [
 
 function LandingPage() {
   const today = useTodayLabel();
+  const [upsellOpen, setUpsellOpen] = useState(false);
+
+  const go = (url: string) => {
+    window.location.href = url;
+  };
 
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
