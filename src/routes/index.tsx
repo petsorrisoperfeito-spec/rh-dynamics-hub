@@ -729,12 +729,7 @@ function LandingPage() {
               type="button"
               aria-label="Fechar"
               onClick={() => {
-                setUpsellOpen(false);
-                clearDialogLocks();
-                const element = document.getElementById("plano-basico");
-                if (element) {
-                  element.scrollIntoView({ behavior: "smooth", block: "start" });
-                }
+                window.location.href = "https://pay.wiapy.com/43LWWQj46YEB";
               }}
               className="absolute right-4 top-4 grid h-8 w-8 place-items-center rounded-sm text-muted-foreground transition-colors hover:text-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
             >
