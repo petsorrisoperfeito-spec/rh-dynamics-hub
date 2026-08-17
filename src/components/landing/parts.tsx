@@ -63,9 +63,18 @@ export function CtaButton({
   pulse?: boolean;
   href?: string;
 }) {
+  const target = href ?? offer.checkoutUrl;
+
   return (
     <a
-      href={href ?? offer.checkoutUrl}
+      href={target}
+      onClick={(e) => {
+        if (!target.startsWith("#")) return;
+        const el = document.querySelector(target);
+        if (!el) return;
+        e.preventDefault();
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }}
       className={cn(
         "group inline-flex w-full max-w-xl items-center justify-center gap-2 rounded-2xl bg-cta text-center font-display font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 active:translate-y-0",
         size === "lg"
