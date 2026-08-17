@@ -463,9 +463,7 @@ function LandingPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
-              <CtaButton>Quero acessar as +500 dinâmicas</CtaButton>
-            </div>
+
           </Reveal>
 
           <Reveal delay={100} className="order-1 lg:order-2">
