@@ -334,39 +334,8 @@ function LandingPage() {
             <SectionTitle className="mt-4">O que você vai receber</SectionTitle>
           </Reveal>
 
-          {/* PRODUTO PRINCIPAL */}
-          <Reveal delay={80} className="mt-10">
-            <article className="grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 lg:grid-cols-2 lg:gap-12">
-              <div className="order-2 lg:order-1">
-                <span className="inline-flex rounded-full bg-teal/12 px-3.5 py-1.5 text-[0.65rem] font-extrabold uppercase tracking-[0.16em] text-teal">
-                  Produto principal
-                </span>
-                <h3 className="text-balance-tight mt-4 text-2xl font-extrabold uppercase leading-tight text-brand sm:text-3xl">
-                  +500 Dinâmicas Prontas para RH
-                </h3>
-                <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  Um grande acervo de dinâmicas prontas para utilizar em treinamentos, integrações,
-                  reuniões, atividades em grupo e desenvolvimento de equipes.
-                </p>
-                <p className="mt-6 inline-flex rounded-2xl bg-brand-gradient px-5 py-3 font-display text-xl font-extrabold uppercase tracking-tight text-brand-foreground sm:text-2xl">
-                  +500 dinâmicas
-                </p>
-              </div>
-              <div className="order-1 lg:order-2">
-                <img
-                  src={imgMockupMain}
-                  alt="Mockup do acervo +500 Dinâmicas Prontas para RH"
-                  width={1200}
-                  height={912}
-                  loading="lazy"
-                  className="h-auto w-full rounded-2xl"
-                />
-              </div>
-            </article>
-          </Reveal>
-
           {/* CARROSSEL DE AMOSTRAS */}
-          <Reveal delay={100} className="mt-8">
+          <Reveal className="mt-8">
             <Carousel opts={{ align: "start", loop: true }} className="mx-auto w-full max-w-4xl">
               <CarouselContent>
                 {previews.map((p) => (
@@ -375,12 +344,12 @@ function LandingPage() {
                       <figcaption className="border-b border-border bg-brand-soft px-4 py-2.5 text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-brand sm:text-[0.7rem]">
                         {p.tag}
                       </figcaption>
-                      <div className="aspect-[4/5] w-full bg-surface">
+                      <div className="flex aspect-[4/5] w-full items-center justify-center bg-surface p-2 sm:p-3">
                         <img
                           src={p.src}
                           alt={p.alt}
                           loading="lazy"
-                          className="h-full w-full object-cover object-top"
+                          className="h-full w-full object-contain"
                         />
                       </div>
                     </figure>
@@ -391,6 +360,7 @@ function LandingPage() {
               <CarouselNext className="right-1 sm:-right-5" />
             </Carousel>
           </Reveal>
+
 
           <Reveal delay={120} className="mt-6">
             <ul className="grid gap-3 rounded-3xl border border-teal/25 bg-brand-soft p-6 sm:grid-cols-2 sm:p-8">
