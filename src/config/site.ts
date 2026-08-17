@@ -37,15 +37,15 @@ export const guarantee = {
 
 
 /** Imagens/mockups — troque os arquivos em src/assets ou aponte para uma URL. */
-import mockupPrincipal from "@/assets/mockup-principal.png.asset.json";
-import bonusCertificado from "@/assets/bonus-certificado.webp.asset.json";
-import bonusManual from "@/assets/bonus-manual.png.asset.json";
-import bonusComunicacao from "@/assets/bonus-comunicacao.png.asset.json";
+import mockupPrincipal from "@/assets/mockup-principal.png";
+import bonusCertificado from "@/assets/bonus-certificado.webp";
+import bonusManual from "@/assets/bonus-manual.png";
+import bonusComunicacao from "@/assets/bonus-comunicacao.png";
 
-export const imgMockupMain = mockupPrincipal.url;
-export const imgBonusCertificado = bonusCertificado.url;
-export const imgBonusManual = bonusManual.url;
-export const imgBonusComunicacao = bonusComunicacao.url;
+export const imgMockupMain = mockupPrincipal;
+export const imgBonusCertificado = bonusCertificado;
+export const imgBonusManual = bonusManual;
+export const imgBonusComunicacao = bonusComunicacao;
 export { default as imgTeam } from "@/assets/hero-equipe.jpg";
 
 /** Planos / pacotes */
@@ -68,10 +68,10 @@ export const plans = {
 };
 
 /** Carrossel da seção "O que você vai receber" */
-export { default as imgCarrossel1 } from "@/assets/carrossel-dinamicas.jpg.asset.json";
-export { default as imgCarrossel2 } from "@/assets/carrossel-reunioes.jpg.asset.json";
-export { default as imgCarrossel3 } from "@/assets/carrossel-nervosismo.jpg.asset.json";
-export { default as imgCarrossel4 } from "@/assets/carrossel-recrutamento.jpg.asset.json";
+export { default as imgCarrossel1 } from "@/assets/carrossel-dinamicas.jpg";
+export { default as imgCarrossel2 } from "@/assets/carrossel-reunioes.jpg";
+export { default as imgCarrossel3 } from "@/assets/carrossel-nervosismo.jpg";
+export { default as imgCarrossel4 } from "@/assets/carrossel-recrutamento.jpg";
 
 /** Valores fictícios exibidos riscados nos bônus. */
 export const bonusValues = {

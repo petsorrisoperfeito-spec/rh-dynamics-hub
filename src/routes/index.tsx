@@ -36,7 +36,7 @@ import {
   SectionLabel,
   SectionTitle,
 } from "@/components/landing/parts";
-import imgSarah from "@/assets/sarah-martins.jpg.asset.json";
+import imgSarah from "@/assets/sarah-martins.jpg";
 
 import {
   bonusValues,
@@ -57,17 +57,17 @@ import {
 /** Amostras do material exibidas no carrossel. */
 const previews = [
   {
-    src: imgCarrossel1.url,
+    src: imgCarrossel1,
     tag: "+500 Dinâmicas Prontas para RH",
     alt: "Página com dinâmicas de grupo detalhadas: objetivo, participantes, tempo e materiais",
   },
   {
-    src: imgCarrossel2.url,
+    src: imgCarrossel2,
     tag: "Manual de Gestão de Recursos Humanos",
     alt: "Página sobre como conduzir reuniões, apresentações, treinamentos e entrevistas",
   },
   {
-    src: imgCarrossel3.url,
+    src: imgCarrossel3,
     tag: "Como melhorar a comunicação em público",
     alt: "Página sobre como controlar o nervosismo e a ansiedade antes de falar",
   },
@@ -602,7 +602,7 @@ function LandingPage() {
           <div className="mt-8 grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-10">
             <div className="mx-auto w-40 max-w-full sm:w-52 md:w-full">
               <img
-                src={imgSarah.url}
+                src={imgSarah}
                 alt="Sarah Martins, autora do material +500 Dinâmicas Prontas para RH"
                 width={1024}
                 height={1024}
