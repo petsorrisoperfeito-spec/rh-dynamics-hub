@@ -22,6 +22,19 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   CtaButton,
   Check,
   PlanButton,
@@ -39,10 +52,38 @@ import {
   imgBonusCertificado,
   imgBonusComunicacao,
   imgBonusManual,
+  imgCarrossel1,
+  imgCarrossel2,
+  imgCarrossel3,
+  imgCarrossel4,
   imgMockupMain,
   imgTeam,
   plans,
 } from "@/config/site";
+
+/** Amostras do material exibidas no carrossel. */
+const previews = [
+  {
+    src: imgCarrossel1.url,
+    tag: "+500 Dinâmicas Prontas para RH",
+    alt: "Página com dinâmicas de grupo detalhadas: objetivo, participantes, tempo e materiais",
+  },
+  {
+    src: imgCarrossel2.url,
+    tag: "Manual de Gestão de Recursos Humanos",
+    alt: "Página sobre como conduzir reuniões, apresentações, treinamentos e entrevistas",
+  },
+  {
+    src: imgCarrossel3.url,
+    tag: "Como melhorar a comunicação em público",
+    alt: "Página sobre como controlar o nervosismo e a ansiedade antes de falar",
+  },
+  {
+    src: imgCarrossel4.url,
+    tag: "Manual de Gestão de Recursos Humanos",
+    alt: "Página sobre as etapas de recrutamento e seleção",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -152,6 +193,11 @@ const packageItems = [
 
 function LandingPage() {
   const today = useTodayLabel();
+  const [upsellOpen, setUpsellOpen] = useState(false);
+
+  const go = (url: string) => {
+    window.location.href = url;
+  };
 
   return (
     <div className="min-h-screen bg-background pb-24 md:pb-0">
@@ -206,7 +252,7 @@ function LandingPage() {
       </header>
 
       {/* PROBLEMA */}
-      <section className="px-5 pb-12 pt-6 sm:pb-16 sm:pt-8">
+      <section className="px-5 pb-10 pt-5 sm:pb-12 sm:pt-6">
         <div className="mx-auto max-w-4xl">
           <Reveal className="text-center">
             <SectionLabel>A rotina real do RH</SectionLabel>
@@ -240,7 +286,7 @@ function LandingPage() {
       </section>
 
       {/* BÔNUS */}
-      <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
+      <section className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
@@ -281,7 +327,7 @@ function LandingPage() {
       </section>
 
       {/* O QUE VOCÊ VAI RECEBER */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionLabel>Conteúdo da compra</SectionLabel>
@@ -319,6 +365,33 @@ function LandingPage() {
             </article>
           </Reveal>
 
+          {/* CARROSSEL DE AMOSTRAS */}
+          <Reveal delay={100} className="mt-8">
+            <Carousel opts={{ align: "start", loop: true }} className="mx-auto w-full max-w-4xl">
+              <CarouselContent>
+                {previews.map((p) => (
+                  <CarouselItem key={p.src} className="sm:basis-1/2">
+                    <figure className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+                      <figcaption className="border-b border-border bg-brand-soft px-4 py-2.5 text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-brand sm:text-[0.7rem]">
+                        {p.tag}
+                      </figcaption>
+                      <div className="aspect-[4/5] w-full bg-surface">
+                        <img
+                          src={p.src}
+                          alt={p.alt}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-top"
+                        />
+                      </div>
+                    </figure>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-1 sm:-left-5" />
+              <CarouselNext className="right-1 sm:-right-5" />
+            </Carousel>
+          </Reveal>
+
           <Reveal delay={120} className="mt-6">
             <ul className="grid gap-3 rounded-3xl border border-teal/25 bg-brand-soft p-6 sm:grid-cols-2 sm:p-8">
               {packageItems.map((item) => (
@@ -332,11 +405,21 @@ function LandingPage() {
               ))}
             </ul>
           </Reveal>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href="#oferta"
+              className="animate-pulse-soft inline-flex w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-cta px-6 py-4 text-center font-display text-base font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 sm:text-lg"
+            >
+              Acessar agora <span aria-hidden>→</span>
+            </a>
+          </div>
+
         </div>
       </section>
 
       {/* ONDE USAR */}
-      <section className="bg-brand-gradient px-5 py-14 sm:py-20">
+      <section className="bg-brand-gradient px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionTitle invert>Onde você pode usar as dinâmicas?</SectionTitle>
@@ -364,7 +447,7 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 py-10 sm:py-14">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <SectionLabel>Benefícios</SectionLabel>
@@ -380,9 +463,7 @@ function LandingPage() {
                 </li>
               ))}
             </ul>
-            <div className="mt-8">
-              <CtaButton>Quero acessar as +500 dinâmicas</CtaButton>
-            </div>
+
           </Reveal>
 
           <Reveal delay={100} className="order-1 lg:order-2">
@@ -404,7 +485,7 @@ function LandingPage() {
       {/* PLANOS */}
       <section
         id="oferta"
-        className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20"
+        className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14"
       >
         <div className="mx-auto max-w-5xl">
           <Reveal className="text-center">
@@ -421,7 +502,7 @@ function LandingPage() {
                 <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
-                <p className="animate-pulse-free mt-2 font-display text-3xl font-extrabold text-cta sm:text-4xl">
+                <p className="animate-pulse-zoom mt-2 origin-center font-display text-3xl font-extrabold text-cta sm:text-4xl">
                   {plans.basic.price}
                 </p>
 
@@ -449,8 +530,13 @@ function LandingPage() {
                   Sem os bônus
                 </p>
                 <div className="mt-6">
-                  <PlanButton href={plans.basic.checkoutUrl} variant="outline" />
+                  <PlanButton
+                    variant="outline"
+                    label="Quero o Plano Básico"
+                    onClick={() => setUpsellOpen(true)}
+                  />
                 </div>
+
               </article>
 
             </Reveal>
@@ -464,7 +550,7 @@ function LandingPage() {
                 <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.complete.name}
                 </p>
-                <p className="animate-pulse-free mt-2 font-display text-4xl font-extrabold text-cta sm:text-5xl">
+                <p className="animate-pulse-zoom mt-2 origin-center font-display text-4xl font-extrabold text-cta sm:text-5xl">
                   {plans.complete.price}
                 </p>
 
@@ -489,7 +575,11 @@ function LandingPage() {
                   ))}
                 </ul>
                 <div className="mt-7 flex flex-col items-center">
-                  <PlanButton href={plans.complete.checkoutUrl} />
+                  <PlanButton
+                    href={plans.complete.checkoutUrl}
+                    label="Quero o Plano Completo"
+                  />
+
                   <p className="mt-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
                     Pagamento seguro • Acesso digital • Liberação após confirmação
                   </p>
@@ -501,25 +591,42 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* URGÊNCIA */}
-      <section className="bg-brand-gradient px-5 py-12 sm:py-16">
-        <div className="mx-auto max-w-3xl text-center">
-          <Reveal>
-            <p className="font-display text-xl font-extrabold uppercase tracking-tight text-cta sm:text-2xl">
-              Oferta especial
-            </p>
-            <p className="mt-3 text-base text-brand-foreground/75 sm:text-lg">
-              Garanta seu acesso enquanto esta condição estiver disponível.
-            </p>
-          </Reveal>
-          <Reveal delay={140} className="mt-8 flex flex-col items-center">
-            <CtaButton>Quero garantir meu acesso</CtaButton>
-          </Reveal>
+      {/* SOBRE A AUTORA */}
+      <section className="border-y border-border px-5 py-12 sm:py-16">
+        <div className="mx-auto max-w-4xl">
+          <div className="text-center">
+            <SectionLabel>Quem criou o material</SectionLabel>
+            <SectionTitle className="mt-4">Sobre a autora</SectionTitle>
+          </div>
+          <div className="mt-8 grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-10">
+            <div className="mx-auto w-40 max-w-full sm:w-52 md:w-full">
+              <img
+                src={imgSarah.url}
+                alt="Sarah Martins, autora do material +500 Dinâmicas Prontas para RH"
+                width={1024}
+                height={1024}
+                loading="lazy"
+                className="aspect-square h-auto w-full rounded-3xl object-cover shadow-soft ring-1 ring-border"
+              />
+            </div>
+            <div className="text-center md:text-left">
+              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-brand sm:text-3xl">
+                Sarah Martins
+              </h3>
+              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+                Sarah Martins atua na área de Recursos Humanos e desenvolvimento de equipes. Criou
+                estratégias para tornar treinamentos mais dinâmicos. Reuniu recursos práticos para
+                facilitar a rotina do RH. Ajuda empresas a fortalecer suas equipes. Seu propósito é
+                tornar o RH mais simples e eficiente.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
 
+
       {/* GARANTIA / COMPRA SEGURA */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 py-10 sm:py-14">
         <Reveal className="mx-auto max-w-3xl">
           <div className="flex flex-col items-center gap-5 rounded-3xl border border-border bg-card p-8 text-center shadow-soft sm:p-10">
             <span className="grid h-16 w-16 place-items-center rounded-2xl bg-teal/10 text-teal">
@@ -538,7 +645,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
+      <section className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-3xl">
           <Reveal className="text-center">
             <SectionLabel>FAQ</SectionLabel>
@@ -566,7 +673,7 @@ function LandingPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-brand-gradient px-5 py-16 sm:py-24">
+      <section className="bg-brand-gradient px-5 py-12 sm:py-16">
         <Reveal className="mx-auto max-w-3xl text-center">
           <SectionTitle invert>
             Tenha +500 dinâmicas prontas para facilitar sua rotina de RH
@@ -581,39 +688,6 @@ function LandingPage() {
             </p>
           </div>
         </Reveal>
-      </section>
-
-      {/* SOBRE A AUTORA */}
-      <section className="border-t border-border px-5 py-14 sm:py-20">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center">
-            <SectionLabel>Quem criou o material</SectionLabel>
-            <SectionTitle className="mt-4">Sobre a autora</SectionTitle>
-          </div>
-          <div className="mt-10 grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-10">
-            <div className="mx-auto w-40 max-w-full sm:w-52 md:w-full">
-              <img
-                src={imgSarah.url}
-                alt="Sarah Martins, autora do material +500 Dinâmicas Prontas para RH"
-                width={1024}
-                height={1024}
-                loading="lazy"
-                className="aspect-square h-auto w-full rounded-3xl object-cover shadow-soft ring-1 ring-border"
-              />
-            </div>
-            <div className="text-center md:text-left">
-              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-brand sm:text-3xl">
-                Sarah Martins
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Sarah Martins atua na área de Recursos Humanos e desenvolvimento de equipes. Criou
-                estratégias para tornar treinamentos mais dinâmicos. Reuniu recursos práticos para
-                facilitar a rotina do RH. Ajuda empresas a fortalecer suas equipes. Seu propósito é
-                tornar o RH mais simples e eficiente.
-              </p>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* RODAPÉ */}
@@ -641,6 +715,47 @@ function LandingPage() {
           Quero acessar agora
         </CtaButton>
       </div>
+
+      {/* POP-UP DE UPGRADE PARA O PLANO PREMIUM */}
+      <Dialog
+        open={upsellOpen}
+        onOpenChange={(open) => {
+          setUpsellOpen(open);
+          if (!open) go(plans.basic.checkoutUrl);
+        }}
+      >
+        <DialogContent className="max-w-[92vw] rounded-3xl border-2 border-cta bg-card p-6 text-center sm:max-w-md sm:p-8">
+          <span
+            aria-hidden
+            className="animate-pulse-zoom mx-auto grid h-14 w-14 place-items-center rounded-2xl bg-cta/12 text-3xl"
+          >
+            🎁
+          </span>
+          <DialogTitle className="text-balance-tight mt-2 font-display text-lg font-extrabold uppercase leading-tight tracking-tight text-brand sm:text-xl">
+            Espere! Tem um presentinho para você
+          </DialogTitle>
+          <DialogDescription className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+            Leve o <strong className="text-brand">Plano Premium</strong> por apenas{" "}
+            <strong className="text-cta">{plans.premium.price}</strong>. Aproveite essa condição
+            especial antes de finalizar sua compra.
+          </DialogDescription>
+          <div className="mt-2 grid gap-3">
+            <a
+              href={plans.premium.checkoutUrl}
+              className="animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl bg-cta px-5 py-4 font-display text-sm font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:text-base"
+            >
+              🎁 Quero o Plano Premium
+            </a>
+            <a
+              href={plans.basic.checkoutUrl}
+              className="text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
+            >
+              Não, quero apenas o Plano Básico
+            </a>
+          </div>
+        </DialogContent>
+      </Dialog>
+
     </div>
   );
 }

@@ -40,6 +40,7 @@
   --color-danger-price: var(--danger-price);
   --color-success: var(--success);
   --animate-pulse-free: pulse-free 2s ease-in-out infinite;
+  --animate-pulse-zoom: pulse-zoom 2.2s ease-in-out infinite;
   --color-surface: var(--surface);
   --shadow-soft: var(--shadow-soft-v);
   --shadow-card: var(--shadow-card-v);
@@ -210,6 +211,11 @@
 @keyframes pulse-free {
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.06); opacity: 0.88; }
+}
+/* Pulsa "em direção ao usuário" — apenas zoom central, sem movimento lateral. */
+@keyframes pulse-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.09); }
 }
 
 @utility reveal-hidden {

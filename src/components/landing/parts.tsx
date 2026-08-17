@@ -19,21 +19,32 @@ export function Reveal({
 export function PlanButton({
   href,
   variant = "solid",
+  label = "🛒 Quero comprar!",
+  onClick,
 }: {
-  href: string;
+  href?: string;
   variant?: "solid" | "outline";
+  label?: string;
+  onClick?: (e: React.MouseEvent) => void;
 }) {
+  const className = cn(
+    "animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-center font-display text-sm font-extrabold uppercase tracking-tight transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 sm:text-base",
+    variant === "solid"
+      ? "bg-cta text-cta-foreground shadow-cta"
+      : "border-2 border-cta bg-cta/10 text-cta",
+  );
+
+  if (onClick) {
+    return (
+      <button type="button" onClick={onClick} className={className}>
+        {label}
+      </button>
+    );
+  }
+
   return (
-    <a
-      href={href}
-      className={cn(
-        "animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl px-6 py-4 text-center font-display text-sm font-extrabold uppercase tracking-tight transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 sm:text-base",
-        variant === "solid"
-          ? "bg-cta text-cta-foreground shadow-cta"
-          : "border-2 border-cta bg-cta/10 text-cta",
-      )}
-    >
-      🛒 Quero comprar!
+    <a href={href} className={className}>
+      {label}
     </a>
   );
 }
