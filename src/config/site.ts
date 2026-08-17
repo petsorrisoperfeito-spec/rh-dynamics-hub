@@ -46,9 +46,28 @@ export { default as imgBonusComunicacao } from "@/assets/bonus-comunicacao.jpg";
 
 /** Planos / pacotes */
 export const plans = {
-  basic: { name: "Plano Básico", price: "R$ 10,00", checkoutUrl: "#checkout" },
-  complete: { name: "Plano Completo", price: "R$ 19,90", checkoutUrl: "#checkout" },
+  basic: {
+    name: "Plano Básico",
+    price: "R$ 10,00",
+    checkoutUrl: "https://pay.wiapy.com/43LWWQj46YEB",
+  },
+  complete: {
+    name: "Plano Completo",
+    price: "R$ 19,90",
+    checkoutUrl: "https://pay.wiapy.com/ATgQi4t2vmOz",
+  },
+  premium: {
+    name: "Plano Premium",
+    price: "R$ 12,90",
+    checkoutUrl: "https://pay.wiapy.com/qXKLJSbPPKpM",
+  },
 };
+
+/** Carrossel da seção "O que você vai receber" */
+export { default as imgCarrossel1 } from "@/assets/carrossel-dinamicas.jpg.asset.json";
+export { default as imgCarrossel2 } from "@/assets/carrossel-reunioes.jpg.asset.json";
+export { default as imgCarrossel3 } from "@/assets/carrossel-nervosismo.jpg.asset.json";
+export { default as imgCarrossel4 } from "@/assets/carrossel-recrutamento.jpg.asset.json";
 
 /** Valores fictícios exibidos riscados nos bônus. */
 export const bonusValues = {
