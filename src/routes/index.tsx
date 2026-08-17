@@ -200,10 +200,10 @@ function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-24 md:pb-0">
+    <div className="min-h-screen bg-background">
       {/* BARRA DE DESTAQUE */}
       <div className="bg-promo px-4 py-2.5 text-center">
-        <p className="text-[0.72rem] font-bold uppercase tracking-[0.14em] text-promo-foreground sm:text-sm">
+        <p className="animate-pulse-text inline-block origin-center text-[0.72rem] font-bold uppercase tracking-[0.14em] text-promo-foreground sm:text-sm">
           Oferta válida apenas hoje{today ? ` — ${today}` : ""}
         </p>
       </div>
