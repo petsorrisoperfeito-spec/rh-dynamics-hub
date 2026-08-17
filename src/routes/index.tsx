@@ -575,7 +575,11 @@ function LandingPage() {
                   ))}
                 </ul>
                 <div className="mt-7 flex flex-col items-center">
-                  <PlanButton href={plans.complete.checkoutUrl} />
+                  <PlanButton
+                    href={plans.complete.checkoutUrl}
+                    label="Quero o Plano Completo"
+                  />
+
                   <p className="mt-3 text-center text-xs font-semibold text-muted-foreground sm:text-sm">
                     Pagamento seguro • Acesso digital • Liberação após confirmação
                   </p>
