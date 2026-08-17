@@ -236,12 +236,12 @@ function LandingPage() {
       </div>
 
       {/* HERO */}
-      <header className="bg-surface-gradient relative flex min-h-[calc(100svh-3rem)] items-center overflow-hidden border-b border-border">
+      <header className="bg-surface-gradient relative flex items-center overflow-hidden border-b border-border">
         <div
           aria-hidden
           className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-teal/10 blur-3xl"
         />
-        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-20 pt-6 text-center md:pb-8 md:pt-8">
+        <div className="relative mx-auto flex w-full max-w-3xl flex-col items-center px-5 pb-10 pt-6 text-center md:pb-8 md:pt-8">
           <SectionLabel>Material digital para RH</SectionLabel>
           <h1 className="text-balance-tight mt-3 text-[1.65rem] font-extrabold uppercase leading-[1.08] text-brand sm:text-4xl lg:text-5xl">
             +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
