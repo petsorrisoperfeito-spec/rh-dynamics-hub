@@ -315,19 +315,17 @@ function LandingPage() {
             <SectionTitle className="mt-4">Bônus</SectionTitle>
           </Reveal>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-10 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
             {bonuses.map((b, i) => (
               <Reveal key={b.title} delay={i * 80}>
-                <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-5 text-center shadow-soft transition-transform duration-200 hover:-translate-y-1 sm:p-6">
-                  <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-surface p-2">
-                    <img
-                      src={b.image}
-                      alt={`Imagem do bônus ${b.title}`}
-                      loading="lazy"
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
-                  <span className="mt-4 inline-flex self-center rounded-full bg-cta/90 px-3 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
+                <article className="flex h-full flex-col items-center text-center">
+                  <img
+                    src={b.image}
+                    alt={`Imagem do bônus ${b.title}`}
+                    loading="lazy"
+                    className="h-auto w-auto max-h-56 max-w-full object-contain sm:max-h-64"
+                  />
+                  <span className="mt-5 inline-flex rounded-full bg-cta/90 px-3 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
                     {b.tag}
                   </span>
                   <h3 className="text-balance-tight mt-3 text-base font-bold leading-snug text-brand sm:text-lg">
@@ -343,6 +341,7 @@ function LandingPage() {
               </Reveal>
             ))}
           </div>
+
         </div>
       </section>
 
