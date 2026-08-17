@@ -212,7 +212,11 @@ function LandingPage() {
    * que o modal esteja fechado e que nenhum bloqueio de clique/scroll continue ativo.
    */
   useEffect(() => {
-    const reset = () => {
+    const reset = (event: PageTransitionEvent) => {
+      if (event.persisted) {
+        window.location.reload();
+        return;
+      }
       if (checkoutTimerRef.current) {
         clearTimeout(checkoutTimerRef.current);
         checkoutTimerRef.current = null;
