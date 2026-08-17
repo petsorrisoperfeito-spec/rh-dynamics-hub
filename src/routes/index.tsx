@@ -299,14 +299,14 @@ function LandingPage() {
             {bonuses.map((b, i) => (
               <Reveal key={b.title} delay={i * 80}>
                 <article className="flex h-full flex-col rounded-3xl border border-border bg-card p-5 text-center shadow-soft transition-transform duration-200 hover:-translate-y-1 sm:p-6">
-                  <img
-                    src={b.image}
-                    alt={`Imagem do bônus ${b.title}`}
-                    width={900}
-                    height={700}
-                    loading="lazy"
-                    className="h-auto w-full rounded-2xl bg-surface"
-                  />
+                  <div className="flex aspect-[4/3] w-full items-center justify-center overflow-hidden rounded-2xl bg-surface p-2">
+                    <img
+                      src={b.image}
+                      alt={`Imagem do bônus ${b.title}`}
+                      loading="lazy"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
                   <span className="mt-4 inline-flex self-center rounded-full bg-cta/90 px-3 py-1 text-[0.6rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
                     {b.tag}
                   </span>
