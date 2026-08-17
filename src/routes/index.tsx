@@ -690,38 +690,8 @@ function LandingPage() {
         </Reveal>
       </section>
 
-      {/* SOBRE A AUTORA */}
-      <section className="border-t border-border px-5 py-14 sm:py-20">
-        <div className="mx-auto max-w-4xl">
-          <div className="text-center">
-            <SectionLabel>Quem criou o material</SectionLabel>
-            <SectionTitle className="mt-4">Sobre a autora</SectionTitle>
-          </div>
-          <div className="mt-10 grid items-center gap-8 rounded-[2rem] border border-border bg-card p-6 shadow-card sm:p-9 md:grid-cols-[minmax(0,14rem)_1fr] md:gap-10">
-            <div className="mx-auto w-40 max-w-full sm:w-52 md:w-full">
-              <img
-                src={imgSarah.url}
-                alt="Sarah Martins, autora do material +500 Dinâmicas Prontas para RH"
-                width={1024}
-                height={1024}
-                loading="lazy"
-                className="aspect-square h-auto w-full rounded-3xl object-cover shadow-soft ring-1 ring-border"
-              />
-            </div>
-            <div className="text-center md:text-left">
-              <h3 className="font-display text-2xl font-extrabold uppercase tracking-tight text-brand sm:text-3xl">
-                Sarah Martins
-              </h3>
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                Sarah Martins atua na área de Recursos Humanos e desenvolvimento de equipes. Criou
-                estratégias para tornar treinamentos mais dinâmicos. Reuniu recursos práticos para
-                facilitar a rotina do RH. Ajuda empresas a fortalecer suas equipes. Seu propósito é
-                tornar o RH mais simples e eficiente.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* RODAPÉ */}
+
 
       {/* RODAPÉ */}
 
