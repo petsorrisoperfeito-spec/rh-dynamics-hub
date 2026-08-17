@@ -496,7 +496,7 @@ function LandingPage() {
           <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
             {/* BÁSICO */}
             <Reveal>
-              <article className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8">
+              <article id="plano-basico" className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8">
                 <p className="text-center font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
