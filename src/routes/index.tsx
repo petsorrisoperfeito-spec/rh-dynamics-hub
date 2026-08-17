@@ -502,7 +502,7 @@ function LandingPage() {
                 <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
-                <p className="animate-pulse-free mt-2 font-display text-3xl font-extrabold text-cta sm:text-4xl">
+                <p className="animate-pulse-zoom mt-2 origin-center font-display text-3xl font-extrabold text-cta sm:text-4xl">
                   {plans.basic.price}
                 </p>
 
