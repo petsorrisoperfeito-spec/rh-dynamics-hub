@@ -469,12 +469,14 @@ function LandingPage() {
             {/* BÁSICO */}
             <Reveal>
               <article className="flex h-full flex-col rounded-[2rem] border border-border bg-card p-6 shadow-soft sm:p-8">
-                <p className="font-display text-lg font-extrabold uppercase tracking-tight text-brand">
+                <p className="text-center font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.basic.name}
                 </p>
-                <p className="animate-pulse-zoom mt-2 origin-center font-display text-3xl font-extrabold text-cta sm:text-4xl">
-                  {plans.basic.price}
-                </p>
+                <div className="mt-4 flex min-h-[5.5rem] items-center justify-center rounded-2xl bg-surface px-4 py-3">
+                  <p className="animate-pulse-zoom origin-center text-center font-display text-3xl font-extrabold text-cta sm:text-4xl">
+                    {plans.basic.price}
+                  </p>
+                </div>
 
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
