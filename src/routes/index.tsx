@@ -240,15 +240,16 @@ function LandingPage() {
             +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
           </h1>
 
-          <div className="mt-4 w-full max-w-[16rem] rounded-2xl bg-card p-2 shadow-card ring-1 ring-border sm:max-w-sm lg:max-w-md">
+          <div className="mt-4 w-full max-w-[16rem] sm:max-w-sm lg:max-w-md">
             <img
               src={imgMockupMain}
               alt="Mockup do material digital +500 Dinâmicas Prontas para RH em tablet e PDFs"
               width={1200}
               height={912}
-              className="h-auto w-full rounded-xl"
+              className="h-auto w-full object-contain"
             />
           </div>
+
 
           <ul className="mt-4 grid w-full max-w-xl grid-cols-2 gap-x-4 gap-y-2 text-left">
             {heroHighlights.map((b) => (
