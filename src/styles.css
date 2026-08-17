@@ -41,6 +41,7 @@
   --color-success: var(--success);
   --animate-pulse-free: pulse-free 2s ease-in-out infinite;
   --animate-pulse-zoom: pulse-zoom 2.2s ease-in-out infinite;
+  --animate-pulse-text: pulse-text 1.8s ease-in-out infinite;
   --color-surface: var(--surface);
   --shadow-soft: var(--shadow-soft-v);
   --shadow-card: var(--shadow-card-v);
