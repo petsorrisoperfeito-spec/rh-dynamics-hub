@@ -49,7 +49,6 @@ import {
   imgCarrossel1,
   imgCarrossel2,
   imgCarrossel3,
-  imgCarrossel4,
   imgMockupMain,
   imgTeam,
   plans,
@@ -71,11 +70,6 @@ const previews = [
     src: imgCarrossel3.url,
     tag: "Como melhorar a comunicação em público",
     alt: "Página sobre como controlar o nervosismo e a ansiedade antes de falar",
-  },
-  {
-    src: imgCarrossel4.url,
-    tag: "Manual de Gestão de Recursos Humanos",
-    alt: "Página sobre as etapas de recrutamento e seleção",
   },
 ];
 
@@ -277,7 +271,7 @@ function LandingPage() {
           </ul>
 
           <div className="mt-5 flex w-full flex-col items-center">
-            <CtaButton pulse>Acessar agora</CtaButton>
+            <CtaButton pulse href="#bonus">Acessar agora</CtaButton>
             <p className="mt-2 text-[0.7rem] text-muted-foreground sm:text-sm">
               Acesso rápido e fácil após a confirmação do pagamento.
             </p>
@@ -320,7 +314,7 @@ function LandingPage() {
       </section>
 
       {/* BÔNUS */}
-      <section className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14">
+      <section id="bonus" className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14 scroll-mt-20">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
@@ -476,7 +470,9 @@ function LandingPage() {
                 alt="Profissionais reunidos durante uma dinâmica de treinamento corporativo"
                 width={1408}
                 height={1008}
-                loading="lazy"
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
                 className="relative h-auto w-full rounded-3xl object-cover shadow-card ring-1 ring-border"
               />
             </div>
