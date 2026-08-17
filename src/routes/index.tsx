@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   CalendarCheck,
   Crown,
@@ -194,10 +194,24 @@ const packageItems = [
 function LandingPage() {
   const today = useTodayLabel();
   const [upsellOpen, setUpsellOpen] = useState(false);
-  const navigatingRef = useRef(false);
+  const [dialogKey, setDialogKey] = useState(0);
+  const checkoutTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const go = (url: string) => {
-    window.location.href = url;
+  const clearDialogLocks = useCallback(() => {
+    const { body } = document;
+    body.style.pointerEvents = "";
+    body.style.overflow = "";
+    body.removeAttribute("data-scroll-locked");
+    body.removeAttribute("aria-hidden");
+  }, []);
+
+  const goToCheckout = (url: string) => {
+    setUpsellOpen(false);
+    clearDialogLocks();
+    if (checkoutTimerRef.current) clearTimeout(checkoutTimerRef.current);
+    checkoutTimerRef.current = setTimeout(() => {
+      window.location.assign(url);
+    }, 250);
   };
 
   /**
@@ -206,17 +220,20 @@ function LandingPage() {
    */
   useEffect(() => {
     const reset = () => {
-      navigatingRef.current = false;
+      if (checkoutTimerRef.current) {
+        clearTimeout(checkoutTimerRef.current);
+        checkoutTimerRef.current = null;
+      }
       setUpsellOpen(false);
-      const { body } = document;
-      body.style.pointerEvents = "";
-      body.style.overflow = "";
-      body.removeAttribute("data-scroll-locked");
-      body.removeAttribute("aria-hidden");
+      setDialogKey((key) => key + 1);
+      clearDialogLocks();
     };
     window.addEventListener("pageshow", reset);
-    return () => window.removeEventListener("pageshow", reset);
-  }, []);
+    return () => {
+      window.removeEventListener("pageshow", reset);
+      if (checkoutTimerRef.current) clearTimeout(checkoutTimerRef.current);
+    };
+  }, [clearDialogLocks]);
 
 
   return (
@@ -240,13 +257,13 @@ function LandingPage() {
             +500 Dinâmicas Prontas <span className="text-teal">para RH</span>
           </h1>
 
-          <div className="mt-4 w-full max-w-[16rem] sm:max-w-sm lg:max-w-md">
+          <div className="mt-4 w-full max-w-[16rem] rounded-2xl bg-card p-2 shadow-card ring-1 ring-border sm:max-w-sm lg:max-w-md">
             <img
               src={imgMockupMain}
               alt="Mockup do material digital +500 Dinâmicas Prontas para RH em tablet e PDFs"
               width={1200}
               height={912}
-              className="h-auto w-full object-contain"
+              className="h-auto w-full rounded-xl"
             />
           </div>
 
@@ -703,14 +720,9 @@ function LandingPage() {
 
       {/* POP-UP DE UPGRADE PARA O PLANO PREMIUM */}
       <Dialog
+        key={dialogKey}
         open={upsellOpen}
-        onOpenChange={(open) => {
-          setUpsellOpen(open);
-          if (!open) {
-            navigatingRef.current = true;
-            go(plans.basic.checkoutUrl);
-          }
-        }}
+        onOpenChange={setUpsellOpen}
       >
 
         <DialogContent className="max-w-[92vw] rounded-3xl border-2 border-cta bg-card p-6 text-center sm:max-w-md sm:p-8">
@@ -731,12 +743,20 @@ function LandingPage() {
           <div className="mt-2 grid gap-3">
             <a
               href={plans.premium.checkoutUrl}
+              onClick={(event) => {
+                event.preventDefault();
+                goToCheckout(plans.premium.checkoutUrl);
+              }}
               className="animate-pulse-soft inline-flex w-full items-center justify-center rounded-2xl bg-cta px-5 py-4 font-display text-sm font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 sm:text-base"
             >
               🎁 Quero o Plano Premium
             </a>
             <a
               href={plans.basic.checkoutUrl}
+              onClick={(event) => {
+                event.preventDefault();
+                goToCheckout(plans.basic.checkoutUrl);
+              }}
               className="text-sm font-semibold text-muted-foreground underline-offset-4 transition-colors hover:text-brand hover:underline"
             >
               Não, quero apenas o Plano Básico
