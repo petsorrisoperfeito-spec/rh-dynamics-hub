@@ -212,6 +212,11 @@
   0%, 100% { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.06); opacity: 0.88; }
 }
+/* Pulsa "em direção ao usuário" — apenas zoom central, sem movimento lateral. */
+@keyframes pulse-zoom {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.09); }
+}
 
 @utility reveal-hidden {
   opacity: 0;
