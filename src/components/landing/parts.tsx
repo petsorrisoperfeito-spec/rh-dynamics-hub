@@ -55,15 +55,17 @@ export function CtaButton({
   className,
   size = "lg",
   pulse = false,
+  href,
 }: {
   children: ReactNode;
   className?: string;
   size?: "lg" | "md";
   pulse?: boolean;
+  href?: string;
 }) {
   return (
     <a
-      href={offer.checkoutUrl}
+      href={href ?? offer.checkoutUrl}
       className={cn(
         "group inline-flex w-full max-w-xl items-center justify-center gap-2 rounded-2xl bg-cta text-center font-display font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 active:translate-y-0",
         size === "lg"
