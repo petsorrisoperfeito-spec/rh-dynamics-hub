@@ -252,7 +252,7 @@ function LandingPage() {
       </header>
 
       {/* PROBLEMA */}
-      <section className="px-5 pb-12 pt-6 sm:pb-16 sm:pt-8">
+      <section className="px-5 pb-10 pt-5 sm:pb-12 sm:pt-6">
         <div className="mx-auto max-w-4xl">
           <Reveal className="text-center">
             <SectionLabel>A rotina real do RH</SectionLabel>
@@ -286,7 +286,7 @@ function LandingPage() {
       </section>
 
       {/* BÔNUS */}
-      <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
+      <section className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-cta px-4 py-1.5 text-[0.68rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
@@ -327,7 +327,7 @@ function LandingPage() {
       </section>
 
       {/* O QUE VOCÊ VAI RECEBER */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionLabel>Conteúdo da compra</SectionLabel>
@@ -419,7 +419,7 @@ function LandingPage() {
       </section>
 
       {/* ONDE USAR */}
-      <section className="bg-brand-gradient px-5 py-14 sm:py-20">
+      <section className="bg-brand-gradient px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-6xl">
           <Reveal className="mx-auto max-w-2xl text-center">
             <SectionTitle invert>Onde você pode usar as dinâmicas?</SectionTitle>
@@ -447,7 +447,7 @@ function LandingPage() {
       </section>
 
       {/* BENEFÍCIOS */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 py-10 sm:py-14">
         <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-16">
           <Reveal className="order-2 lg:order-1">
             <SectionLabel>Benefícios</SectionLabel>
@@ -485,7 +485,7 @@ function LandingPage() {
       {/* PLANOS */}
       <section
         id="oferta"
-        className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20"
+        className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14"
       >
         <div className="mx-auto max-w-5xl">
           <Reveal className="text-center">
@@ -626,7 +626,7 @@ function LandingPage() {
 
 
       {/* GARANTIA / COMPRA SEGURA */}
-      <section className="px-5 py-14 sm:py-20">
+      <section className="px-5 py-10 sm:py-14">
         <Reveal className="mx-auto max-w-3xl">
           <div className="flex flex-col items-center gap-5 rounded-3xl border border-border bg-card p-8 text-center shadow-soft sm:p-10">
             <span className="grid h-16 w-16 place-items-center rounded-2xl bg-teal/10 text-teal">
@@ -645,7 +645,7 @@ function LandingPage() {
       </section>
 
       {/* FAQ */}
-      <section className="bg-surface-gradient border-y border-border px-5 py-14 sm:py-20">
+      <section className="bg-surface-gradient border-y border-border px-5 py-10 sm:py-14">
         <div className="mx-auto max-w-3xl">
           <Reveal className="text-center">
             <SectionLabel>FAQ</SectionLabel>
@@ -673,7 +673,7 @@ function LandingPage() {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-brand-gradient px-5 py-16 sm:py-24">
+      <section className="bg-brand-gradient px-5 py-12 sm:py-16">
         <Reveal className="mx-auto max-w-3xl text-center">
           <SectionTitle invert>
             Tenha +500 dinâmicas prontas para facilitar sua rotina de RH
