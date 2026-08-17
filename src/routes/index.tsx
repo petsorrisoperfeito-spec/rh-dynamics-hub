@@ -365,6 +365,33 @@ function LandingPage() {
             </article>
           </Reveal>
 
+          {/* CARROSSEL DE AMOSTRAS */}
+          <Reveal delay={100} className="mt-8">
+            <Carousel opts={{ align: "start", loop: true }} className="mx-auto w-full max-w-4xl">
+              <CarouselContent>
+                {previews.map((p) => (
+                  <CarouselItem key={p.src} className="sm:basis-1/2">
+                    <figure className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
+                      <figcaption className="border-b border-border bg-brand-soft px-4 py-2.5 text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-brand sm:text-[0.7rem]">
+                        {p.tag}
+                      </figcaption>
+                      <div className="aspect-[4/5] w-full bg-surface">
+                        <img
+                          src={p.src}
+                          alt={p.alt}
+                          loading="lazy"
+                          className="h-full w-full object-cover object-top"
+                        />
+                      </div>
+                    </figure>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="left-1 sm:-left-5" />
+              <CarouselNext className="right-1 sm:-right-5" />
+            </Carousel>
+          </Reveal>
+
           <Reveal delay={120} className="mt-6">
             <ul className="grid gap-3 rounded-3xl border border-teal/25 bg-brand-soft p-6 sm:grid-cols-2 sm:p-8">
               {packageItems.map((item) => (
@@ -378,6 +405,16 @@ function LandingPage() {
               ))}
             </ul>
           </Reveal>
+
+          <div className="mt-8 flex justify-center">
+            <a
+              href="#oferta"
+              className="animate-pulse-soft inline-flex w-full max-w-md items-center justify-center gap-2 rounded-2xl bg-cta px-6 py-4 text-center font-display text-base font-extrabold uppercase tracking-tight text-cta-foreground shadow-cta transition-all duration-200 hover:-translate-y-0.5 hover:brightness-105 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-cta/40 sm:text-lg"
+            >
+              Acessar agora <span aria-hidden>→</span>
+            </a>
+          </div>
+
         </div>
       </section>
 
