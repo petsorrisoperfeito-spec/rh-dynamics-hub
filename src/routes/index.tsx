@@ -550,7 +550,7 @@ function LandingPage() {
                 <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.complete.name}
                 </p>
-                <p className="animate-pulse-free mt-2 font-display text-4xl font-extrabold text-cta sm:text-5xl">
+                <p className="animate-pulse-zoom mt-2 origin-center font-display text-4xl font-extrabold text-cta sm:text-5xl">
                   {plans.complete.price}
                 </p>
 
