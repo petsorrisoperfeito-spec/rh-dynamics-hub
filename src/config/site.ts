@@ -15,7 +15,7 @@ export const offer = {
   /** Selo curto acima do preço. Deixe "" para esconder. */
   priceLabel: "Pagamento único",
   /** Link do checkout (Kiwify, Hotmart, Braip, etc.) */
-  checkoutUrl: "#checkout",
+  checkoutUrl: "#oferta",
 };
 
 /** Vídeo da VSL. Aceita link de embed (YouTube/Vimeo/Panda/VTurb). */
