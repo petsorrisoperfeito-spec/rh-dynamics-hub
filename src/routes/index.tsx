@@ -22,6 +22,19 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
   CtaButton,
   Check,
   PlanButton,
@@ -39,10 +52,38 @@ import {
   imgBonusCertificado,
   imgBonusComunicacao,
   imgBonusManual,
+  imgCarrossel1,
+  imgCarrossel2,
+  imgCarrossel3,
+  imgCarrossel4,
   imgMockupMain,
   imgTeam,
   plans,
 } from "@/config/site";
+
+/** Amostras do material exibidas no carrossel. */
+const previews = [
+  {
+    src: imgCarrossel1.url,
+    tag: "+500 Dinâmicas Prontas para RH",
+    alt: "Página com dinâmicas de grupo detalhadas: objetivo, participantes, tempo e materiais",
+  },
+  {
+    src: imgCarrossel2.url,
+    tag: "Manual de Gestão de Recursos Humanos",
+    alt: "Página sobre como conduzir reuniões, apresentações, treinamentos e entrevistas",
+  },
+  {
+    src: imgCarrossel3.url,
+    tag: "Como melhorar a comunicação em público",
+    alt: "Página sobre como controlar o nervosismo e a ansiedade antes de falar",
+  },
+  {
+    src: imgCarrossel4.url,
+    tag: "Manual de Gestão de Recursos Humanos",
+    alt: "Página sobre as etapas de recrutamento e seleção",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
