@@ -692,9 +692,6 @@ function LandingPage() {
 
       {/* RODAPÉ */}
 
-
-      {/* RODAPÉ */}
-
       <footer className="px-5 py-10">
         <div className="mx-auto flex max-w-5xl flex-col items-center gap-4 text-center">
           <nav className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
