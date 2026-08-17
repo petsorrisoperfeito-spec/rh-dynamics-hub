@@ -52,7 +52,7 @@ export { default as imgTeam } from "@/assets/hero-equipe.jpg";
 export const plans = {
   basic: {
     name: "Plano Básico",
-    price: "R$ 10,00",
+    price: "R$ 9,90",
     checkoutUrl: "https://pay.wiapy.com/43LWWQj46YEB",
   },
   complete: {
