@@ -37,12 +37,16 @@ export const guarantee = {
 
 
 /** Imagens/mockups — troque os arquivos em src/assets ou aponte para uma URL. */
-export { default as imgMockupMain } from "@/assets/mockup-dinamicas.png";
-export { default as imgMockupBonus } from "@/assets/mockup-bonus.png";
+import mockupPrincipal from "@/assets/mockup-principal.png.asset.json";
+import bonusCertificado from "@/assets/bonus-certificado.webp.asset.json";
+import bonusManual from "@/assets/bonus-manual.png.asset.json";
+import bonusComunicacao from "@/assets/bonus-comunicacao.png.asset.json";
+
+export const imgMockupMain = mockupPrincipal.url;
+export const imgBonusCertificado = bonusCertificado.url;
+export const imgBonusManual = bonusManual.url;
+export const imgBonusComunicacao = bonusComunicacao.url;
 export { default as imgTeam } from "@/assets/hero-equipe.jpg";
-export { default as imgBonusCertificado } from "@/assets/bonus-certificado.jpg";
-export { default as imgBonusManual } from "@/assets/bonus-manual.jpg";
-export { default as imgBonusComunicacao } from "@/assets/bonus-comunicacao.jpg";
 
 /** Planos / pacotes */
 export const plans = {
