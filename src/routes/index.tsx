@@ -684,13 +684,6 @@ function LandingPage() {
         </div>
       </footer>
 
-      {/* CTA FIXO MOBILE */}
-      <div className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-card/95 px-4 py-3 shadow-[0_-8px_24px_-12px_oklch(0.28_0.082_259/0.3)] backdrop-blur md:hidden">
-        <CtaButton size="md" className="max-w-none">
-          Quero acessar agora
-        </CtaButton>
-      </div>
-
       {/* POP-UP DE UPGRADE PARA O PLANO PREMIUM */}
       <Dialog
         open={upsellOpen}
