@@ -194,10 +194,30 @@ const packageItems = [
 function LandingPage() {
   const today = useTodayLabel();
   const [upsellOpen, setUpsellOpen] = useState(false);
+  const navigatingRef = useRef(false);
 
   const go = (url: string) => {
     window.location.href = url;
   };
+
+  /**
+   * Ao voltar do checkout (inclusive via cache de navegação do browser), garante
+   * que o modal esteja fechado e que nenhum bloqueio de clique/scroll continue ativo.
+   */
+  useEffect(() => {
+    const reset = () => {
+      navigatingRef.current = false;
+      setUpsellOpen(false);
+      const { body } = document;
+      body.style.pointerEvents = "";
+      body.style.overflow = "";
+      body.removeAttribute("data-scroll-locked");
+      body.removeAttribute("aria-hidden");
+    };
+    window.addEventListener("pageshow", reset);
+    return () => window.removeEventListener("pageshow", reset);
+  }, []);
+
 
   return (
     <div className="min-h-screen bg-background">
