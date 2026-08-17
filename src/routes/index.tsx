@@ -519,12 +519,15 @@ function LandingPage() {
                 <span className="absolute -top-3.5 left-1/2 inline-flex -translate-x-1/2 items-center gap-1.5 whitespace-nowrap rounded-full bg-cta px-4 py-1.5 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-cta-foreground">
                   <Crown className="h-3.5 w-3.5" aria-hidden /> Mais vantajoso
                 </span>
-                <p className="mt-3 font-display text-lg font-extrabold uppercase tracking-tight text-brand">
+                <p className="mt-3 text-center font-display text-lg font-extrabold uppercase tracking-tight text-brand">
                   {plans.complete.name}
                 </p>
-                <p className="animate-pulse-zoom mt-2 origin-center font-display text-4xl font-extrabold text-cta sm:text-5xl">
-                  {plans.complete.price}
-                </p>
+                <div className="mt-4 flex min-h-[5.5rem] items-center justify-center rounded-2xl bg-cta/10 px-4 py-3">
+                  <p className="animate-pulse-zoom origin-center text-center font-display text-4xl font-extrabold text-cta sm:text-5xl">
+                    {plans.complete.price}
+                  </p>
+                </div>
+
 
                 <ul className="mt-6 grid gap-3">
                   <li className="flex items-start gap-3 text-sm font-semibold text-brand sm:text-base">
