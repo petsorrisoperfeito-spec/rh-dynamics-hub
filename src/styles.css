@@ -218,6 +218,11 @@
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.09); }
 }
+/* Pulsação suave apenas no texto da barra de promoção. */
+@keyframes pulse-text {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.82; }
+}
 
 @utility reveal-hidden {
   opacity: 0;
