@@ -360,18 +360,16 @@ function LandingPage() {
               <CarouselContent>
                 {previews.map((p) => (
                   <CarouselItem key={p.src} className="sm:basis-1/2">
-                    <figure className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card shadow-soft">
-                      <figcaption className="border-b border-border bg-brand-soft px-4 py-2.5 text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-brand sm:text-[0.7rem]">
+                    <figure className="flex h-full flex-col items-center px-2">
+                      <figcaption className="text-center text-[0.62rem] font-extrabold uppercase tracking-[0.14em] text-teal sm:text-[0.7rem]">
                         {p.tag}
                       </figcaption>
-                      <div className="flex aspect-[4/5] w-full items-center justify-center bg-surface p-2 sm:p-3">
-                        <img
-                          src={p.src}
-                          alt={p.alt}
-                          loading="lazy"
-                          className="h-full w-full object-contain"
-                        />
-                      </div>
+                      <img
+                        src={p.src}
+                        alt={p.alt}
+                        loading="lazy"
+                        className="mt-3 h-auto w-auto max-h-[22rem] max-w-full object-contain sm:max-h-[26rem]"
+                      />
                     </figure>
                   </CarouselItem>
                 ))}
@@ -380,6 +378,7 @@ function LandingPage() {
               <CarouselNext className="right-1 sm:-right-5" />
             </Carousel>
           </Reveal>
+
 
 
           <Reveal delay={120} className="mt-6">
