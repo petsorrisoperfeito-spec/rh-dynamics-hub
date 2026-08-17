@@ -41,6 +41,7 @@
   --color-success: var(--success);
   --animate-pulse-free: pulse-free 2s ease-in-out infinite;
   --animate-pulse-zoom: pulse-zoom 2.2s ease-in-out infinite;
+  --animate-pulse-text: pulse-text 1.8s ease-in-out infinite;
   --color-surface: var(--surface);
   --shadow-soft: var(--shadow-soft-v);
   --shadow-card: var(--shadow-card-v);
@@ -216,6 +217,11 @@
 @keyframes pulse-zoom {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.09); }
+}
+/* Pulsação suave apenas no texto da barra de promoção. */
+@keyframes pulse-text {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.04); opacity: 0.82; }
 }
 
 @utility reveal-hidden {
